@@ -2,13 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.bexton.android.UsbMassStorageToggle"
     android:versionCode="1"
-    android:versionName="1.0.3">
+    android:versionName="1.1.0" >
 
     <uses-sdk android:minSdkVersion="14" />
 
     <application
         android:icon="@drawable/icon"
-        android:label="@string/app_name">
+        android:label="@string/app_name" >
+        
         <activity
             android:label="@string/app_name"
             android:name=".UsbMassStorageToggleActivity" >
@@ -17,6 +18,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+	    <receiver android:name=".UsbMassStorageToggleActivity">
+	       <intent-filter>
+	            <action android:name="android.intent.action.ACTION_BATTERY_CHANGED" />
+	        </intent-filter>
+	    </receiver> 
+	    
+		<receiver android:enabled="true" android:name=".BootUpReceiver"
+		    android:permission="android.permission.RECEIVE_BOOT_COMPLETED">		
+	        <intent-filter>
+	                <action android:name="android.intent.action.BOOT_COMPLETED" />
+	                <category android:name="android.intent.category.DEFAULT" />
+	        </intent-filter>
+		</receiver>	
+		           
     </application>
-
+    
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    
 </manifest>
