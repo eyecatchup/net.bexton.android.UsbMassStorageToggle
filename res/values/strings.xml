@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">USB Mass Storage Toggle</string>
+    <string name="app_desc">Usage: Click the green Droid to enable; the blue Droid to disable USB Mass Storage.</string>
+    
+    <string name="ums_state">UMS currently</string>
+    <string name="ums_cstate">disabled.</string>
+
+    <string name="quit">Close Application</string>   
+        
+</resources>
