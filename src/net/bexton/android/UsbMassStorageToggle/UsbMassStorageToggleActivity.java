@@ -37,9 +37,6 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
 
     private static TextView UMSstate;
 
-    private final int ID_NOT1 = 0;
-    private final int ID_NOT2 = 1;
-
     NotificationManager notMan;
 
     /**
@@ -250,7 +247,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                     }
 
                     if(usbConnected == true && powerUp == true){
-                        showNotification("USB connected. Tap to open UMS App.",false,ID_NOT1);
+                        showNotification("USB connected. Tap to open UMS App.",false,0);
                     }
                     else if(usbConnected == false && powerUp == false) {
                         String msg = "USB disconnected.";
@@ -258,7 +255,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                             msg = msg + "UMS has been disabled.";
                             runRootCommand("echo 0 > /sys/devices/platform/usb_mass_storage/lun0/file");
                         }
-                        showNotification(msg,false,ID_NOT2);
+                        showNotification(msg,false,0);
                     } else { }
                 }
             }
