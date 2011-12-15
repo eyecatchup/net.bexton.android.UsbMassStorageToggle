@@ -27,13 +27,14 @@ import android.widget.Toast;
 public class UsbMassStorageToggleActivity extends Activity implements OnClickListener
 {
 
-    public Boolean enable;
-    public Boolean disable;
+    public boolean enable;
+    public boolean disable;
 
-    public Boolean powerUp;
-    public Boolean usbConnected;
+    public boolean powerUp;
+    public boolean usbConnected;
 
-    public Boolean umsEnabled = false;
+    public boolean umsEnabled;
+    public boolean tetherEnabled;
 
     private static TextView UMSstate;
 
@@ -92,8 +93,8 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                         if(enable == true){
                             // Change text view content for current UMS state.
                             UMSstate.setText("enabled.");
-                            // Show a toast for extra feedback.
-                            popMsg("UMS successfully enabled.");
+                            // Show a notification for extra feedback.
+                            showNotification("UMS enabled.",false,0);
                             umsEnabled = true;
                         }
                         else {
@@ -105,7 +106,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                         // Show a toast if the device is not connected via USB.
                         popMsg("Failure! You can not enable UMS whithout a USB connection.");
                     }
-                break;
+                    break;
 
                 // Invoke when the blue Droid (disable UMS) is clicked.
                 case R.id.UMSoff:
@@ -116,12 +117,15 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                         // Show a toast for extra feedback.
                         popMsg("UMS successfully disabled.");
                         umsEnabled = false;
+                        if(usbConnected == true && powerUp == true){
+                            showNotification("USB connected. Tap to open UMS App.",false,0);
+                        }
                     }
                     else {
                         // Show a toast if there were any errors with executing the shell command.
                         popMsg("Failure! Did you granted root permissions?");
                     }
-                break;
+                    break;
             }
         }
 
@@ -182,11 +186,10 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
      *  Try to obtain the current UMS state
      *  by reading the content of the lunfile.
      */
-        public static void getUmsState() {
+        public void getUmsState() {
             String UMS_STATE = "0";
             try {
-                BufferedReader reader = new BufferedReader(
-                    new FileReader("/sys/devices/platform/usb_mass_storage/lun0/file"), 256);
+                BufferedReader reader = new BufferedReader(new FileReader("/sys/devices/platform/usb_mass_storage/lun0/file"), 256);
                 try {
                     UMS_STATE = reader.readLine();
                 } finally {
@@ -195,8 +198,10 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
 
                 if (UMS_STATE.equals("/dev/block/vold/179:1")) {
                     UMSstate.setText("enabled.");
+                    umsEnabled = true;
                 } else {
                     UMSstate.setText("disabled.");
+                    umsEnabled = false;
                 }
             } catch (Exception e) { }
         }
@@ -230,44 +235,48 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                     powerUp = false;
 
                     switch (status) {
-                    case BatteryManager.BATTERY_STATUS_CHARGING:
-                        powerUp = true;
-                        break;
-                    case BatteryManager.BATTERY_STATUS_FULL:
-                        powerUp = true;
-                        break;
+                        case BatteryManager.BATTERY_STATUS_CHARGING:
+                            powerUp = true;
+                            break;
+                        case BatteryManager.BATTERY_STATUS_FULL:
+                            powerUp = true;
+                            break;
                     }
 
                     usbConnected = false;
 
                     switch (plugged) {
-                    case BatteryManager.BATTERY_PLUGGED_USB:
-                        usbConnected = true;
-                        break;
+                        case BatteryManager.BATTERY_PLUGGED_USB:
+                            usbConnected = true;
+                            break;
+                        case BatteryManager.BATTERY_PLUGGED_AC:
+                            usbConnected = false;
+                            break;
                     }
 
-                    if(usbConnected == true && powerUp == true){
+                    if(usbConnected == true && powerUp == true && umsEnabled == false){
                         showNotification("USB connected. Tap to open UMS App.",false,0);
                     }
+                    else if(usbConnected == true && powerUp == true && umsEnabled == true){
+                        showNotification("USB enabled.",false,0);
+                    }
                     else if(usbConnected == false && powerUp == false) {
-                        String msg = "USB disconnected.";
                         if(umsEnabled == true) {
-                            msg = msg + "UMS has been disabled.";
                             runRootCommand("echo 0 > /sys/devices/platform/usb_mass_storage/lun0/file");
+                            umsEnabled = false;
+                            UMSstate.setText("disabled.");
+                            showNotification("UMS automatically disabled.",false,0);
                         }
-                        showNotification(msg,false,0);
                     } else { }
                 }
             }
         };
 
-    /**
-     *  Handle notifications.
-     */
         private void showNotification(String text, boolean ongoing, int id) {
 
-            Notification notification = new Notification(R.drawable.icon_blue_s,
-                text, System.currentTimeMillis());
+            Notification notification = new Notification(
+                    R.drawable.icon_blue_s, text,
+                    System.currentTimeMillis());
             if (ongoing) {
                 notification.flags = Notification.FLAG_ONGOING_EVENT;
 
@@ -282,7 +291,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                             UsbMassStorageToggleActivity.class),
                             PendingIntent.FLAG_UPDATE_CURRENT);
 
-            notification.setLatestEventInfo(this, "USB Mass Storage Toggle", text,
+            notification.setLatestEventInfo(this, "USB Mass Storage", text,
                     contentIntent);
             notMan.notify(id, notification);
 
