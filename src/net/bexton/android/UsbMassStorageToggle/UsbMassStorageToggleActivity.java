@@ -267,6 +267,9 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                             UMSstate.setText("disabled.");
                             showNotification("UMS automatically disabled.",false,0);
                         }
+                        else {
+                            showNotification("USB disconnected.",false,0);
+                        }
                     } else { }
                 }
             }
