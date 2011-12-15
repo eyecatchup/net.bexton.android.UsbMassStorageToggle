@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_desc">Bruk: Klikk på den grønne Droid å muliggjøre; den blå Droid å deaktivere USB Mass Storage.</string>
+    
+    <string name="str_state">UMS dag</string>
+    <string name="str_enabled">aktiviert</string>
+    <string name="str_disabled">deaktiviert</string>
+    <string name="notUsbConnect">USB-tilkoblet. Bank for å åpne UMS App.</string>
+    <string name="notUsbDisconnect">USB frakoblet.</string>
+    <string name="notUmsAutoDisabled">automatisk deaktivert</string>
+    <string name="errNoUsb">Feil! Du kan ikke aktivere UMS uten en USB-tilkobling.</string>
+    <string name="errNoRoot">Feil! Har du fått root tillatelser?</string>
+
+    <string name="quit">Lukk Application</string>  
+        
+</resources>
