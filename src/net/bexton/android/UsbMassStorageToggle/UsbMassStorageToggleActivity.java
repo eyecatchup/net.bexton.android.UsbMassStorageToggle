@@ -258,7 +258,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                         showNotification("USB connected. Tap to open UMS App.",false,0);
                     }
                     else if(usbConnected == true && powerUp == true && umsEnabled == true){
-                        showNotification("USB enabled.",false,0);
+                        showNotification("UMS enabled.",false,0);
                     }
                     else if(usbConnected == false && powerUp == false) {
                         if(umsEnabled == true) {
