@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_desc">Nutzung: Tippe auf den grünen Droid um UMS zu aktivieren, oder auf den Blauen um UMS zu deaktivieren.</string>
+
+    <string name="str_state">UMS ist derzeit</string>
+    <string name="str_enabled">aktiviert</string>
+    <string name="str_disabled">deaktiviert</string>
+    <string name="notUsbConnect">USB-Verbindung erkannt. UMS App öffnen.</string>
+    <string name="notUsbDisconnect">USB-Verbindung getrennt.</string>
+    <string name="notUmsAutoDisabled">automatisch deaktiviert</string>    
+    <string name="errNoUsb">Fehler! Du kannst UMS nicht ohne USB-Verbindung aktivieren.</string>
+    <string name="errNoRoot">Fehler! Hast Du Root-Rechte verweigert?</string>        
+    
+    <string name="quit">Anwendung beenden</string> 
+        
+</resources>
