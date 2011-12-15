@@ -36,6 +36,14 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     public boolean umsEnabled;
     public boolean tetherEnabled;
 
+    public String str_enabled;
+    public String str_disabled;
+    public String notUsbConnect;
+    public String notUsbDisconnect;
+    public String notUmsAutoDisabled;
+    public String errNoUsb;
+    public String errNoRoot;
+
     private static TextView UMSstate;
 
     NotificationManager notMan;
@@ -50,6 +58,14 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
 
             // Define content node.
             setContentView(R.layout.main);
+
+            str_enabled = getString(R.string.str_enabled);
+            str_disabled = getString(R.string.str_disabled);
+            notUsbConnect = getString(R.string.notUsbConnect);
+            notUsbDisconnect = getString(R.string.notUsbDisconnect);
+            notUmsAutoDisabled = getString(R.string.notUmsAutoDisabled);
+            errNoUsb = getString(R.string.errNoUsb);
+            errNoRoot = getString(R.string.errNoRoot);
 
             // Add App Info Text containing a clickable link to xda thread.
             TextView tv = (TextView)findViewById(R.id.infoTxt);
@@ -92,19 +108,19 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                         enable = runRootCommand("echo /dev/block/vold/179:1 > /sys/devices/platform/usb_mass_storage/lun0/file");
                         if(enable == true){
                             // Change text view content for current UMS state.
-                            UMSstate.setText("enabled.");
+                            UMSstate.setText(str_enabled + ".");
                             // Show a notification for extra feedback.
-                            showNotification("UMS enabled.",false,0);
+                            showNotification("UMS " + str_enabled + ".",false,0);
                             umsEnabled = true;
                         }
                         else {
                             // Show a toast if there were any errors with executing the shell command.
-                            popMsg("Failure! Did you granted root permissions?");
+                            popMsg(errNoRoot);
                         }
                     }
                     else {
                         // Show a toast if the device is not connected via USB.
-                        popMsg("Failure! You can not enable UMS whithout a USB connection.");
+                        popMsg(errNoUsb);
                     }
                     break;
 
@@ -113,17 +129,17 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                     disable = runRootCommand("echo 0 > /sys/devices/platform/usb_mass_storage/lun0/file");
                     if(disable == true){
                         // Change text view content for current UMS state.
-                        UMSstate.setText("disabled.");
+                        UMSstate.setText(str_disabled + ".");
                         // Show a toast for extra feedback.
-                        popMsg("UMS successfully disabled.");
+                        popMsg("UMS " + str_disabled + ".");
                         umsEnabled = false;
                         if(usbConnected == true && powerUp == true){
-                            showNotification("USB connected. Tap to open UMS App.",false,0);
+                            showNotification(notUsbConnect,false,0);
                         }
                     }
                     else {
                         // Show a toast if there were any errors with executing the shell command.
-                        popMsg("Failure! Did you granted root permissions?");
+                        popMsg(errNoRoot);
                     }
                     break;
             }
@@ -197,10 +213,10 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                 }
 
                 if (UMS_STATE.equals("/dev/block/vold/179:1")) {
-                    UMSstate.setText("enabled.");
+                    UMSstate.setText(str_enabled + ".");
                     umsEnabled = true;
                 } else {
-                    UMSstate.setText("disabled.");
+                    UMSstate.setText(str_disabled + ".");
                     umsEnabled = false;
                 }
             } catch (Exception e) { }
@@ -255,20 +271,20 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                     }
 
                     if(usbConnected == true && powerUp == true && umsEnabled == false){
-                        showNotification("USB connected. Tap to open UMS App.",false,0);
+                        showNotification(notUsbConnect,false,0);
                     }
                     else if(usbConnected == true && powerUp == true && umsEnabled == true){
-                        showNotification("UMS enabled.",false,0);
+                        showNotification("UMS " + str_enabled + ".",false,0);
                     }
                     else if(usbConnected == false && powerUp == false) {
                         if(umsEnabled == true) {
                             runRootCommand("echo 0 > /sys/devices/platform/usb_mass_storage/lun0/file");
                             umsEnabled = false;
-                            UMSstate.setText("disabled.");
-                            showNotification("UMS automatically disabled.",false,0);
+                            UMSstate.setText(str_disabled + ".");
+                            showNotification("UMS " + notUmsAutoDisabled + ".",false,0);
                         }
                         else {
-                            showNotification("USB disconnected.",false,0);
+                            showNotification(notUsbDisconnect,false,0);
                         }
                     } else { }
                 }
