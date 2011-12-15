@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_desc">Gebruik: Klik op de groene Droid in staat te stellen, de blauwe Droid de USB Mass Storage uit te schakelen.</string>
+    
+    <string name="str_state">UMS tegenwoordig</string>
+    <string name="str_enabled">geactiveerd</string>
+    <string name="str_disabled">uitgeschakeld</string>
+    <string name="notUsbConnect">USB is aangesloten. Tik om UMS App te openen.</string>
+    <string name="notUsbDisconnect">USB losgekoppeld.</string>
+    <string name="notUmsAutoDisabled">automatisch uitgeschakeld</string>    
+    <string name="errNoUsb">Fout! U kunt geen UMS zonder een USB-aansluiting.</string>
+    <string name="errNoRoot">Fout! Heeft u verleende root-permissies?</string>
+
+    <string name="quit">Sluit de toepassing</string>       
+        
+</resources>
