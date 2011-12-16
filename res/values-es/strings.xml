@@ -6,7 +6,7 @@
     <string name="str_state">Estado del Montaje USB</string>
     <string name="str_enabled">Activado</string>
     <string name="str_disabled">Desactivado</string>
-    <string name="notUsbConnect">USB conectado. Pulse para abrir la aplicación UMS.</string>
+    <string name="notUsbConnect">USB conectado. Presiona para abrir la aplicacion.</string>
     <string name="notUsbDisconnect">USB desconectado.</string>
     <string name="notUmsAutoDisabled">desactivar automáticamente</string>    
     <string name="errNoUsb">Error! Para habilitar es necesario estar conectado por USB.</string>
