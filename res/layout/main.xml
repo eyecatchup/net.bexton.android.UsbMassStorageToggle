@@ -4,6 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:padding="10dip"
+    android:background="@drawable/bg"
     >
 <TextView
     android:layout_width="fill_parent"
@@ -27,23 +28,11 @@
                 android:layout_height="wrap_content"
                 android:gravity="center">
                 <Button
-                    android:id="@+id/UMSon"
+                    android:id="@+id/UsbDroid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:background="@drawable/icon_green" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-                <Button
-                    android:id="@+id/UMSoff"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:background="@drawable/icon_blue" />
-            </LinearLayout>
+                    android:background="@drawable/usbdroid" />
+            </LinearLayout>           
         </TableRow>
     </TableLayout>
        <TableLayout
@@ -59,7 +48,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:padding="0dp"
-                    android:text="@string/ums_state"
+                    android:text="@string/str_state"
                     android:gravity="right"
                     />
             </LinearLayout>
@@ -72,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:id="@+id/UMSstate"
-                    android:text="@string/ums_cstate"
+                    android:text="@string/str_disabled"
                     />
             </LinearLayout>
         </TableRow>
