@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="app_desc">Nutzung: Tippe auf den grünen Droid um UMS zu aktivieren, oder auf den Blauen um UMS zu deaktivieren.</string>
+    <string name="app_desc">Nutzung: Tippe auf den Droide um den UMS Modus zu wechseln.</string>
 
     <string name="str_state">UMS ist derzeit</string>
     <string name="str_enabled">aktiviert</string>

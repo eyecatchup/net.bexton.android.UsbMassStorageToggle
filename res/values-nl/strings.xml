@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="app_desc">Gebruik: Klik op de groene Droid in staat te stellen, de blauwe Droid de USB Mass Storage uit te schakelen.</string>
+    <string name="app_desc">Gebruik: Tik op de Droid te UMS schakelaar.</string>
     
     <string name="str_state">UMS tegenwoordig</string>
     <string name="str_enabled">geactiveerd</string>

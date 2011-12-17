@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="app_desc">Bruk: Klikk på den grønne Droid å muliggjøre; den blå Droid å deaktivere USB Mass Storage.</string>
+    <string name="app_desc">Bruk: Trykk på Droid å bytte UMS-modus.</string>
     
     <string name="str_state">UMS dag</string>
     <string name="str_enabled">aktiviert</string>

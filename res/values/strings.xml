@@ -2,11 +2,17 @@
 <resources>
     
     <string name="app_name">USB Mass Storage Toggle</string>
-    <string name="app_desc">Usage: Click the green Droid to enable; the blue Droid to disable USB Mass Storage.</string>
-    
-    <string name="ums_state">UMS currently</string>
-    <string name="ums_cstate">disabled.</string>
+    <string name="app_desc">Usage: Tap on the Droid to switch UMS mode.</string>
 
-    <string name="quit">Close Application</string>   
+    <string name="str_state">UMS is currently</string>
+    <string name="str_enabled">enabled</string>
+    <string name="str_disabled">disabled</string>
+    <string name="notUsbConnect">USB connected. Tap to open UMS App.</string>
+    <string name="notUsbDisconnect">USB disconnected.</string>
+    <string name="notUmsAutoDisabled">automatically disabled.</string>    
+    <string name="errNoUsb">Failure! You cannot enable UMS without a USB connection.</string>
+    <string name="errNoRoot">Failure! Did you granted Root permissions?</string>        
+    
+    <string name="quit">Quit application</string> 
         
 </resources>

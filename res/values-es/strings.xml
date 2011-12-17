@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="app_desc">Uso: presiona el androide verde para activar, y para desactivar presiona el androide azul.</string>
+    <string name="app_desc">Uso: Toque en el Droid para cambiar el modo UMS.</string>
     
     <string name="str_state">Estado del Montaje USB</string>
     <string name="str_enabled">Activado</string>

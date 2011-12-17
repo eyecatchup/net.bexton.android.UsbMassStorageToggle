@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="app_desc">Användning: Klicka på den gröna Droid att aktivera, den blå Droid att inaktivera USB Mass Storage.</string>
+    <string name="app_desc">Användning: Klicka på Droid att byta UMS-läge.</string>
     
     <string name="str_state">UMS idag</string>
     <string name="str_enabled">aktiverad</string>
