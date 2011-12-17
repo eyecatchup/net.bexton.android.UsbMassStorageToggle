@@ -45,6 +45,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     public String errNoRoot;
 
     private static TextView UMSstate;
+    private static View UsbAndroid;
 
     NotificationManager notMan;
 
@@ -72,13 +73,9 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
             tv.append(Html.fromHtml("App Info: <a href='http://forum.xda-developers.com/showthread.php?t=1389375'>http://forum.xda-developers.com/showthread.php?t=1389375</a>"));
             tv.setMovementMethod(LinkMovementMethod.getInstance());
 
-            // Define the enable button node and add an OnClickListener.
-            View enableUMS = findViewById(R.id.UMSon);
-            enableUMS.setOnClickListener(this);
-
             // Define the disable button node and add an OnClickListener.
-            View disableUMS = findViewById(R.id.UMSoff);
-            disableUMS.setOnClickListener(this);
+            UsbAndroid = findViewById(R.id.UsbDroid);
+            UsbAndroid.setOnClickListener(this);
 
             // Define the text view node to hold the current UMS state.
             UMSstate = (TextView)findViewById(R.id.UMSstate);
@@ -103,43 +100,45 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
             switch(v.getId()){
 
                 // Invoke when the green Droid (enable UMS) is clicked.
-                case R.id.UMSon:
-                    if(usbConnected == true && powerUp == true){
-                        enable = runRootCommand("echo /dev/block/vold/179:1 > /sys/devices/platform/usb_mass_storage/lun0/file");
-                        if(enable == true){
+                case R.id.UsbDroid:
+                    if(umsEnabled != true) {
+                        if(usbConnected == true && powerUp == true) {
+                            enable = runRootCommand("echo /dev/block/mmcblk0 > /sys/devices/platform/usb_mass_storage/lun0/file");
+                            if(enable == true) {
+                                // Change text view content for current UMS state.
+                                UMSstate.setText(str_enabled + ".");
+                                // Show a notification for extra feedback.
+                                showNotification("UMS " + str_enabled + ".",false,0);
+                                umsEnabled = true;
+                                UsbAndroid.setBackgroundDrawable(getResources().getDrawable(R.drawable.usbdroid_green));
+                            }
+                            else {
+                                // Show a toast if there were any errors with executing the shell command.
+                                popMsg(errNoRoot);
+                            }
+                        }
+                        else {
+                            // Show a toast if the device is not connected via USB.
+                            popMsg(errNoUsb);
+                        }
+                    }
+                    else {
+                        disable = runRootCommand("echo \"\" > /sys/devices/platform/usb_mass_storage/lun0/file");
+                        if(disable == true){
                             // Change text view content for current UMS state.
-                            UMSstate.setText(str_enabled + ".");
-                            // Show a notification for extra feedback.
-                            showNotification("UMS " + str_enabled + ".",false,0);
-                            umsEnabled = true;
+                            UMSstate.setText(str_disabled + ".");
+                            // Show a toast for extra feedback.
+                            popMsg("UMS " + str_disabled + ".");
+                            umsEnabled = false;
+                            UsbAndroid.setBackgroundDrawable(getResources().getDrawable(R.drawable.usbdroid_blue));
+                            if(usbConnected == true && powerUp == true){
+                                showNotification(notUsbConnect,false,0);
+                            }
                         }
                         else {
                             // Show a toast if there were any errors with executing the shell command.
                             popMsg(errNoRoot);
                         }
-                    }
-                    else {
-                        // Show a toast if the device is not connected via USB.
-                        popMsg(errNoUsb);
-                    }
-                    break;
-
-                // Invoke when the blue Droid (disable UMS) is clicked.
-                case R.id.UMSoff:
-                    disable = runRootCommand("echo 0 > /sys/devices/platform/usb_mass_storage/lun0/file");
-                    if(disable == true){
-                        // Change text view content for current UMS state.
-                        UMSstate.setText(str_disabled + ".");
-                        // Show a toast for extra feedback.
-                        popMsg("UMS " + str_disabled + ".");
-                        umsEnabled = false;
-                        if(usbConnected == true && powerUp == true){
-                            showNotification(notUsbConnect,false,0);
-                        }
-                    }
-                    else {
-                        // Show a toast if there were any errors with executing the shell command.
-                        popMsg(errNoRoot);
                     }
                     break;
             }
@@ -212,7 +211,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                     reader.close();
                 }
 
-                if (UMS_STATE.equals("/dev/block/vold/179:1")) {
+                if (UMS_STATE.equals("/dev/block/mmcblk0")) {
                     UMSstate.setText(str_enabled + ".");
                     umsEnabled = true;
                 } else {
@@ -278,9 +277,10 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                     }
                     else if(usbConnected == false && powerUp == false) {
                         if(umsEnabled == true) {
-                            runRootCommand("echo 0 > /sys/devices/platform/usb_mass_storage/lun0/file");
+                            runRootCommand("echo \"\" > /sys/devices/platform/usb_mass_storage/lun0/file");
                             umsEnabled = false;
                             UMSstate.setText(str_disabled + ".");
+                            UsbAndroid.setBackgroundDrawable(getResources().getDrawable(R.drawable.usbdroid_blue));
                             showNotification("UMS " + notUmsAutoDisabled + ".",false,0);
                         }
                         else {
