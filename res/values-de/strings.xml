@@ -13,5 +13,6 @@
     <string name="errNoRoot">Fehler! Hast Du Root-Rechte verweigert?</string>        
     
     <string name="quit">Anwendung beenden</string> 
+    <string name="menu_settings">Einstellungen</string>
         
 </resources>

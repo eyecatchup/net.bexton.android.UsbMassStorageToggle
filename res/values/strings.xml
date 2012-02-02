@@ -2,6 +2,8 @@
 <resources>
     
     <string name="app_name">USB Mass Storage Toggle</string>
+    <string name="app_versionCode">1</string>
+    <string name="app_versionName">1.2.0</string>
     <string name="app_desc">Usage: Tap on the Droid to switch UMS mode.</string>
 
     <string name="str_state">UMS is currently</string>
@@ -11,8 +13,16 @@
     <string name="notUsbDisconnect">USB disconnected.</string>
     <string name="notUmsAutoDisabled">automatically disabled.</string>    
     <string name="errNoUsb">Failure! You cannot enable UMS without a USB connection.</string>
-    <string name="errNoRoot">Failure! Did you granted Root permissions?</string>        
+    <string name="errNoRoot">Failure! Did you granted Root permissions?</string>   
+    <string name="errNoSu">Your phone is not rooted! Sorry, you cannot use this App without root access.</string>
+    <string name="errNoLun">Your phone is not rooted! Sorry, you cannot use this App without root access.</string>
+    <string name="errWrongDevice">Your phone is not rooted! Sorry, you cannot use this App without root access.</string>     
     
-    <string name="quit">Quit application</string> 
+    <string name="quit">Quit application</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_info">Info</string>
+    
+    <string name="device_defaultMountPoint">/dev/block/vold/179:1</string>
+    <string name="device_defaultMountPath">/sys/devices/platform/usb_mass_storage/lun0/file</string>
         
 </resources>
