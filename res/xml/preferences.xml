@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceCategory
+            android:title="Path Settings">
+    <EditTextPreference
+      android:title="VFAT Mount Points"
+      android:summary="View / Change auto-detected values."
+      android:key="point" />   
+ <EditTextPreference
+      android:title="EXT Mount Points"
+      android:summary="View / Change auto-detected values."
+      android:key="pointExt" /> 
+ <EditTextPreference
+      android:title="Lunfile Path"
+      android:summary="View / Change auto-detected values."
+      android:key="path" />
+</PreferenceCategory>
+<PreferenceCategory
+            android:title="Mount Settings">
+        <CheckBoxPreference
+                android:key="defaultMount"
+                android:title="VFAT as default"
+                android:defaultValue="true"
+                android:summary="Mount vfat partition as default." />
+    	<CheckBoxPreference
+                android:key="mtpSupport"
+                android:title="Force UMS / Surpress MTP"
+                android:defaultValue="false"
+                android:summary="Removes mtp from persist.sys.usb.config (will be restored, when unchecked)." />
+</PreferenceCategory>
+<PreferenceCategory
+            android:title="Application">
+ <Preference
+      android:title="App Version"
+      android:summary="@string/app_versionName"
+      android:key="version" />           
+ <Preference
+      android:title="Your device"
+      android:summary="Codename of phone model"
+      android:key="deviceName" />
+ <Preference
+      android:title="Copyright"
+      android:summary="Stephan Schmitz"
+      android:key="source" />
+</PreferenceCategory>             
+</PreferenceScreen>
