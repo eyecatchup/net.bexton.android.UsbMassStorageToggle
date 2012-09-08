@@ -1,69 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:padding="10dip"
-    android:background="@drawable/bg"
-    >
-<TextView
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:id="@+id/infoTxt"
-    />
-<TextView
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:text="@string/app_desc"
-    />
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:stretchColumns="*">
-        <TableRow android:layout_marginTop="20dip">
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-                <Button
-                    android:id="@+id/UsbDroid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/usbdroid" />
-            </LinearLayout>           
-        </TableRow>
-    </TableLayout>
-       <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:stretchColumns="*">
-        <TableRow android:layout_marginTop="20dip">
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="0dp"
-                    android:text="@string/str_state"
-                    android:gravity="right"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="5dp"
-                    android:id="@+id/UMSstate"
-                    android:text="@string/str_disabled"
-                    />
-            </LinearLayout>
-        </TableRow>
-    </TableLayout>
-</LinearLayout>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:gravity="center"
+	android:padding="10dip">
+		
+		<Button
+			android:id="@+id/UI_ToggleStateButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:paddingTop="50dp"
+			android:background="@drawable/usbdroid" />
+      
+       <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:paddingTop="10dp"
+			android:id="@+id/UI_TextUMSState"
+			android:text="" />
+       
+       <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="10dp"
+			android:text="@string/AppUsage" />
+  </LinearLayout>
