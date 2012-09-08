@@ -1,18 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources>  
+    <string name="AppName">USB Mass Storage Toggle</string>
+    <string name="AppVersion">1.3.2</string>
+    <string name="AppAuthor">&#169; 2012 Stephan Schmitz, Jürgen Rauscher</string>
     
-    <string name="app_name">USB Mass Storage Toggle</string>
-    <string name="app_desc">Usage: Tap on the Droid to switch UMS mode.</string>
-
-    <string name="str_state">UMS is currently</string>
-    <string name="str_enabled">enabled</string>
-    <string name="str_disabled">disabled</string>
-    <string name="notUsbConnect">USB connected. Tap to open UMS App.</string>
-    <string name="notUsbDisconnect">USB disconnected.</string>
-    <string name="notUmsAutoDisabled">automatically disabled.</string>    
-    <string name="errNoUsb">Failure! You cannot enable UMS without a USB connection.</string>
-    <string name="errNoRoot">Failure! Did you granted Root permissions?</string>        
-    
-    <string name="quit">Quit application</string> 
+    <string name="AppUsage">Usage: Tap on the symbol to switch the UMS mode.</string>
         
+    <string name="Quit">Quit application</string>
+    <string name="MenuSettings">Settings</string>
+    <string name="MenuWebLink">Visit Weblink</string>
+       
+    <string name="UMSEnabled">UMS is activated.</string>
+    <string name="UMSDisabled">UMS is deactivated.</string>
+    <string name="NotificationUSBConnected">USB connected. Tap to open the UMS app.</string>
+    <string name="NotificationUSBDisconnected">USB disconnected.</string>
+    <string name="NotificationUMSAutoDisabled">UMS automatically deactivated.</string>
+    
+    <string name="MountWarning">Mounting means that some apps won\'t run correctly anymore if they are accessing the SD-Card right now. Are you sure that you want to mount now?</string>
+    
+    <string name="ErrorNoUSB">Error! You cannot enable UMS without a USB connection.</string>
+    <string name="ErrorNoRoot">Error! Did you grant root permissions to the app?</string>   
+    <string name="ErrorNoSuperUser">Superuser binary not found! You cannot use this app without root access.</string>
+    <string name="ErrorNoLunFileFound">Lunfile not found! You cannot use this app without root access.</string>
+    <string name="ErrorUnrootedDevice">Phone seems to be not rooted! You cannot use this app without root access.</string>         
+    <string name="ErrorNoPartitionsFound">No partitions found! Please use the menu to configure them manually.</string>
+    
+    <string name="PrefsPlaySoundOnToggleTitle">Play sound on Toggle</string>
+    <string name="PrefsPlaySoundOnToggleSummary">Plays a sound when toggling the UMS-State</string>
+    
+    <string name="PrefsAutoMountTitle">Automount on USB Connect</string>
+    <string name="PrefsAutoMountSummary">Automatically mounts the SD-Card when the USB-cable is plugged in.</string>
+    
+    <string name="PrefsLoggingTitle">Logging</string>
+    <string name="PrefsLoggingSummary">Enable or disable logging to the OS.</string>
+    
+    <string name="PrefsStickyNotificationsTitle">Sticky Notifications</string>
+    <string name="PrefsStickyNotificationsSummary">If checked, the notifications are non-erasable in the statusbar anymore.</string>
+    
+    <string name="PrefsWarnOnMountTitle">Show warning on mount</string>
+    <string name="PrefsWarnOnMountSummary">Shows a warning before mounting to prevent accidental mounting. (Note: Setting is not respected in automatic mode).</string>
+        
+    <string name="PrefsDefaultMountTitle">VFAT as default"</string>
+    <string name="PrefsDefaultMountSummary">Mount vfat partition as default.</string>
+    
+    <string name="PrefsMTPSupportTitle">Force UMS / Suppress MTP</string>
+    <string name="PrefsMTPSupportSummary">Removes MTP from persist.sys.usb.config (will be restored, when unchecked).</string>
+    
+    <string name="PrefsVFATMountPointsTitle">VFAT Mount Points</string>
+    <string name="PrefsVFATMountPointsSummary">View/Change auto-detected values.</string>
+      
+    <string name="PrefsEXTMountPointsTitle">EXT Mount Points</string>
+    <string name="PrefsEXTMountPointsSummary">View/Change auto-detected values.</string>
+    
+    <string name="PrefsLUNPathTitle">Lunfile Path</string>
+    <string name="PrefsLUNPathSummary">View/Change auto-detected values.</string>
+    
+    <string name="PrefsCategoryAppSettings">Application Settings</string>
+    <string name="PrefsCategoryMountSettings">Mount Settings</string>
+    <string name="PrefsCategoryPathSettings">Path Settings</string>
+    <string name="PrefsCategoryInfo">Information</string>
+
+    <string name="PrefsDeviceName">Device name</string>
+    <string name="PrefsVersion">Version</string>
+    <string name="PrefsAuthor">Author</string>
+         
 </resources>

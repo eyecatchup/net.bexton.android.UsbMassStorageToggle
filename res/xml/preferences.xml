@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    
+<PreferenceCategory android:title="@string/PrefsCategoryAppSettings">
+   	<CheckBoxPreference android:key="stickyNotifications" android:title="@string/PrefsStickyNotificationsTitle" android:summary="@string/PrefsStickyNotificationsSummary" android:defaultValue="true" />
+   	<CheckBoxPreference android:key="usbAutoMount" android:title="@string/PrefsAutoMountTitle" android:summary="@string/PrefsAutoMountSummary" android:defaultValue="false" />
+   	<CheckBoxPreference android:key="warnBeforeMount" android:title="@string/PrefsWarnOnMountTitle" android:summary="@string/PrefsWarnOnMountSummary" android:defaultValue="false" />
+	<CheckBoxPreference android:key="loggingEnabled" android:title="@string/PrefsLoggingTitle" android:summary="@string/PrefsLoggingSummary" android:defaultValue="true" />
+	<CheckBoxPreference android:key="playSoundOnToggle" android:title="@string/PrefsPlaySoundOnToggleTitle" android:summary="@string/PrefsPlaySoundOnToggleSummary" android:defaultValue="true"	/>
+	
+ </PreferenceCategory><PreferenceCategory android:title="@string/PrefsCategoryPathSettings">
+	<EditTextPreference android:key="point" android:title="@string/PrefsVFATMountPointsTitle" android:summary="@string/PrefsVFATMountPointsSummary" android:defaultValue="" />   
+	<EditTextPreference android:key="pointExt" android:title="@string/PrefsEXTMountPointsTitle" android:summary="@string/PrefsEXTMountPointsSummary" android:defaultValue="" /> 
+	<EditTextPreference android:key="path" android:title="@string/PrefsLUNPathTitle" android:summary="@string/PrefsLUNPathSummary" android:defaultValue=""/>
+</PreferenceCategory>
+
+<PreferenceCategory android:title="@string/PrefsCategoryMountSettings">
+    <CheckBoxPreference android:key="defaultMount" android:title="@string/PrefsDefaultMountTitle" android:summary="@string/PrefsDefaultMountSummary" android:defaultValue="true" />
+    <CheckBoxPreference android:key="mtpSupport" android:title="@string/PrefsMTPSupportTitle" android:summary="@string/PrefsMTPSupportSummary" android:defaultValue="false" />
+</PreferenceCategory>
+ 
+ <PreferenceCategory android:title="@string/PrefsCategoryInfo">
+	<Preference android:title="@string/PrefsDeviceName" android:summary="" android:key="deviceName" />
+	<Preference android:title="@string/PrefsVersion" android:summary="@string/AppVersion" android:key="version" />
+	<Preference android:title="@string/PrefsAuthor" android:summary="@string/AppAuthor" android:key="author" /> 
+ </PreferenceCategory>
+
+</PreferenceScreen>
