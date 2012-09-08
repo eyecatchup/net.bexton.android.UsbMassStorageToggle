@@ -113,7 +113,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         {
         	Logger.logI(TAG, "Device specific settings loaded from shared preferences.");
         }
-        logDeviceStats();          
+        logDeviceStats();
         initStringsFromResources();
         
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -291,22 +291,21 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     	{
     		if(usbConnected && powerUp)
     		{       			
-	        	boolean success = runRootCommand(
-	        			"echo \"" + prefsVfatMountPoint + "\" > " + prefsLunfilePath);
+	        	boolean success = runRootCommand("echo \"" + prefsVfatMountPoint + "\" > " + prefsLunfilePath);
 	            if(success)
 	            {
-	                // Change text view content for current UMS state.
-	                UI_TextUMSState.setText(StrStateEnabled);
-	                // Show a notification for extra feedback.
-	                showNotification(StrStateEnabled,false,0);
 	                umsEnabled = true;
+
+	                UI_TextUMSState.setText(StrStateEnabled);
 	                UI_ToggleStateButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.usbdroid_green));
+
+	                showNotification(StrStateEnabled);
 	            }
 	            else
 	            {
                     // Show a toast if there were any errors 
                 	// with executing the shell command.
-                    popMsg(StrErrorNoRoot);	            	
+                    popMsg(StrErrorNoRoot);
 	            }
     		}
     		else
@@ -326,16 +325,16 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                 boolean success = runRootCommand("echo \"\" > " + prefsLunfilePath);
                 if(success)
                 {
-                    // Change text view content for current UMS state.
-                    UI_TextUMSState.setText(StrStateDisabled);
-                    // Show a toast for extra feedback.
-                    popMsg(StrStateDisabled);
-                    
                     umsEnabled = false;
+
+                    UI_TextUMSState.setText(StrStateDisabled);
                     UI_ToggleStateButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.usbdroid_blue));
-                    showNotification(StrNotificationUSBConnected,false,0);
+
+                    showNotification(StrNotificationUSBConnected);
+                    popMsg(StrStateDisabled);
                 }
-                else {
+                else
+                {
                     // Show a toast if there were any errors with executing the shell command.
                     popMsg(StrErrorNoRoot);
                 }
@@ -418,8 +417,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     
     private String getLunPath()
     {
-    	final String path = strRootCommand(
-    			"find /sys/devices/platform `pwd` -name \"file\" | grep \"usb\" | grep \"lun0\" | sed -n '1,0p'");
+    	final String path = strRootCommand("find /sys/devices/platform `pwd` -name \"file\" | grep \"usb\" | grep \"lun0\" | sed -n '1,0p'");
     	
      	if(fileExists(path))
     	{
@@ -434,8 +432,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     
     private String getSdcard()
     {
-    	final String path = strRootCommand(
-    			"cat /proc/mounts | grep fat | grep sdcard | awk '{print $1}' | sed -n '1,0p'");
+    	final String path = strRootCommand("cat /proc/mounts | grep fat | grep sdcard | awk '{print $1}' | sed -n '1,0p'");
 
     	if(fileExists(path))
     	{
@@ -450,8 +447,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     
     private String getSdExt()
     {
-    	final String path = strRootCommand(
-    			"cat /proc/mounts | grep ext | grep sd-ext | awk '{print $1}' | sed -n '1,0p'");
+    	final String path = strRootCommand("cat /proc/mounts | grep ext | grep sd-ext | awk '{print $1}' | sed -n '1,0p'");
     	
     	if(fileExists(path))
     	{
@@ -538,7 +534,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
 		}
 		
 		final String op = output.toString();
-		Logger.logD(TAG, "su -c "+command+" ==> "+ op);
+		Logger.logD(TAG, "su -c " + command + " ==> " + op);
 		
 		return op;    // any residual return value from the command
     }        
@@ -662,9 +658,9 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                 	
                 	// ready, but not enabled
                 	if(!umsEnabled)
-                		showNotification(StrNotificationUSBConnected,false,0);
+                		showNotification(StrNotificationUSBConnected);
                 	else // enabled
-                        showNotification(StrStateEnabled,false,0);                    	
+                        showNotification(StrStateEnabled);                    	
                 }
                 else
                 {
@@ -672,11 +668,11 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                     {
                     	// force anmount, must disconnect
                     	tryUnmount(true);
-                        showNotification("UMS " + StrNotificationUMSAutoDisabled + ".",false,0);
+                        showNotification("UMS " + StrNotificationUMSAutoDisabled + ".");
                     }
                     else
                     {
-                        showNotification(StrNotificationUSBDisconnected,false,0);
+                        showNotification(StrNotificationUSBDisconnected);
                     }
                 }
             }
@@ -684,20 +680,20 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     };
 
     private String lastNotifText = null;
-    private boolean lastNotifOngoing;
-    private int lastNotifId;
     
     private void repostLastNotification()
     {
     	if(lastNotifText != null)
-    		showNotification(lastNotifText, lastNotifOngoing, lastNotifId);
+    		showNotification(lastNotifText);
     }
     
-    private void showNotification(String text, boolean ongoing, int id)
+    private void showNotification(final String text)
     {
+    	final int NOTIFICATION_ID = 0;
+    	
     	if(prefsStickyNotifications)
     	{
-    		notificationManager.cancel(id);
+    		notificationManager.cancel(NOTIFICATION_ID);
     	}
     	
 		PendingIntent contentIntent = PendingIntent
@@ -714,7 +710,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
        	else
        		builder.setSmallIcon(R.drawable.usbdroid_blue_small);
        		
-        if (ongoing || prefsStickyNotifications)
+        if (prefsStickyNotifications)
         	builder.setOngoing(true);
         else
             builder.setAutoCancel(true);
@@ -723,10 +719,8 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         
     	Notification notification = builder.getNotification();
 
-        notificationManager.notify(id, notification);
+        notificationManager.notify(NOTIFICATION_ID, notification);
         
         lastNotifText = text;
-        lastNotifOngoing = ongoing;
-        lastNotifId = id;
     }       
 }

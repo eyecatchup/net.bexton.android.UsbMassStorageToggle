@@ -38,7 +38,7 @@
 	       <intent-filter>
 	           <action android:name="android.intent.action.ACTION_BATTERY_CHANGED" />
 	        </intent-filter>
-	    </receiver>        
+	    </receiver>
 	        	    
 		<receiver android:enabled="true" android:name="net.bexton.UsbMassStorageToggle.BootUpReceiver"
 		    android:permission="android.permission.RECEIVE_BOOT_COMPLETED">		

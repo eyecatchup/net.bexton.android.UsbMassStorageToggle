@@ -6,8 +6,7 @@
    	<CheckBoxPreference android:key="usbAutoMount" android:title="@string/PrefsAutoMountTitle" android:summary="@string/PrefsAutoMountSummary" android:defaultValue="false" />
    	<CheckBoxPreference android:key="warnBeforeMount" android:title="@string/PrefsWarnOnMountTitle" android:summary="@string/PrefsWarnOnMountSummary" android:defaultValue="false" />
 	<CheckBoxPreference android:key="loggingEnabled" android:title="@string/PrefsLoggingTitle" android:summary="@string/PrefsLoggingSummary" android:defaultValue="true" />
-	<CheckBoxPreference android:key="playSoundOnToggle" android:title="@string/PrefsPlaySoundOnToggleTitle" android:summary="@string/PrefsPlaySoundOnToggleSummary" android:defaultValue="true"	/>
-	
+
  </PreferenceCategory><PreferenceCategory android:title="@string/PrefsCategoryPathSettings">
 	<EditTextPreference android:key="point" android:title="@string/PrefsVFATMountPointsTitle" android:summary="@string/PrefsVFATMountPointsSummary" android:defaultValue="" />   
 	<EditTextPreference android:key="pointExt" android:title="@string/PrefsEXTMountPointsTitle" android:summary="@string/PrefsEXTMountPointsSummary" android:defaultValue="" /> 

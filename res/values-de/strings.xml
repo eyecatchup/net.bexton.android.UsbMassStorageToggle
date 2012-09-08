@@ -8,7 +8,7 @@
     <string name="MenuWebLink">Weblink besuchen</string>
        
     <string name="UMSEnabled">UMS ist aktiviert.</string>
-    <string name="UMSDisabled">UMS is deaktiviert.</string>
+    <string name="UMSDisabled">UMS ist deaktiviert.</string>
     <string name="NotificationUSBConnected">USB verbunden. Tippe um die UMS App zu öffnen.</string>
     <string name="NotificationUSBDisconnected">USB nicht verbunden.</string>
     <string name="NotificationUMSAutoDisabled">UMS automatisch deaktiviert.</string>
@@ -21,9 +21,6 @@
     <string name="ErrorNoLunFileFound">Lun-Datei nicht gefunden! Sie können diese App nicht ohne Root-Berechtigungen ausführen.</string>
     <string name="ErrorUnrootedDevice">Das Telefon scheint keinen Root-Zugang zu besitzen! Sie können diese App nicht ohne Root-Berechtigungen ausführen..</string>         
     <string name="ErrorNoPartitionsFound">Keine Partitionen gefunden! Bitte konfigurieren sie die Einstellungen manuell.</string>
-    
-    <string name="PrefsPlaySoundOnToggleTitle">Ton beim umschalten abspielen</string>
-    <string name="PrefsPlaySoundOnToggleSummary">Spielt einen Ton beim umschalten ab.</string>
     
     <string name="PrefsAutoMountTitle">Automatisches aktivieren bei USB-Verbindung</string>
     <string name="PrefsAutoMountSummary">Aktiviert UMS automatisch wenn das USB-Kabel eingesteckt wird.</string>
