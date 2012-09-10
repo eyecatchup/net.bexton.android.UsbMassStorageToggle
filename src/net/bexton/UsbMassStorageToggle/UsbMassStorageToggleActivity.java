@@ -364,7 +364,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         prefsVfatMountPoint = getSdcard();        	
         prefsExtMountPoint = getSdExt();
     	
-    	if(hasFat == false && hasExt == false)
+    	if(!hasFat && !hasExt)
     	{
     		setup = false;
     		abortMsg = getString(R.string.ErrorNoPartitionsFound);
@@ -392,7 +392,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     {
     	Logger.logI(TAG, "Device name: " + deviceName);
     	Logger.logI(TAG, "VFAT Partition: sdcard mounted @ "+prefsVfatMountPoint);
-    	if(hasExt == true)
+    	if(hasExt)
     	{
     		Logger.logI(TAG, "EXT Partition: sd-ext mounted @ "+prefsExtMountPoint);
     	}
