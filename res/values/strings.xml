@@ -24,10 +24,7 @@
     <string name="ErrorNoLunFileFound">Lunfile not found! You cannot use this app without root access.</string>
     <string name="ErrorUnrootedDevice">Phone seems to be not rooted! You cannot use this app without root access.</string>         
     <string name="ErrorNoPartitionsFound">No partitions found! Please use the menu to configure them manually.</string>
-    
-    <string name="PrefsPlaySoundOnToggleTitle">Play sound on Toggle</string>
-    <string name="PrefsPlaySoundOnToggleSummary">Plays a sound when toggling the UMS-State</string>
-    
+      
     <string name="PrefsAutoMountTitle">Automount on USB Connect</string>
     <string name="PrefsAutoMountSummary">Automatically mounts the SD-Card when the USB-cable is plugged in.</string>
     
