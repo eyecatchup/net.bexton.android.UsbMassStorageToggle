@@ -1,41 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.bexton.android.UsbMassStorageToggle"
-    android:versionCode="1"
-    android:versionName="1.1.4" >
+    package="net.bexton.UsbMassStorageToggle"
+    android:versionCode="2"
+    android:versionName="@string/AppVersion"
+    >
 
     <uses-sdk android:minSdkVersion="14" />
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    
     <application
         android:icon="@drawable/usbdroid_blue"
-        android:label="@string/app_name" >
+        android:label="@string/AppName"
+        android:theme="@style/StyleMain"
+        >
         
         <activity
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Translucent"
-            android:name=".UsbMassStorageToggleActivity" >
-            <intent-filter >
+            android:label="@string/AppName"
+            android:name="net.bexton.UsbMassStorageToggle.UsbMassStorageToggleActivity"
+        	android:theme="@style/StyleMain"
+        	android:launchMode="singleInstance"
+        	>
+        	
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="net.bexton.UsbMassStorageToggle.UmsPreferencesActivity"
+        	android:theme="@style/StylePrefs"
+        	android:launchMode="singleInstance"        	
+        	>             
+        </activity>        
         
-	    <receiver android:name=".UsbMassStorageToggleActivity">
+	    <receiver android:name="net.bexton.UsbMassStorageToggleActivity">
 	       <intent-filter>
 	           <action android:name="android.intent.action.ACTION_BATTERY_CHANGED" />
 	        </intent-filter>
-	    </receiver>        
+	    </receiver>
 	        	    
-		<receiver android:enabled="true" android:name=".BootUpReceiver"
+		<receiver android:enabled="true" android:name="net.bexton.UsbMassStorageToggle.BootUpReceiver"
 		    android:permission="android.permission.RECEIVE_BOOT_COMPLETED">		
 	        <intent-filter>
 	                <action android:name="android.intent.action.BOOT_COMPLETED" />
 	                <category android:name="android.intent.category.DEFAULT" />
 	        </intent-filter>
-		</receiver>	
-		           
-    </application>
-    
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    
+		</receiver>	           
+    </application>  
 </manifest>
