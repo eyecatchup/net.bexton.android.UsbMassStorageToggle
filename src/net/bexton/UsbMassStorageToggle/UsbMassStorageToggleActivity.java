@@ -37,9 +37,6 @@ import android.widget.Toast;
 public class UsbMassStorageToggleActivity extends Activity implements OnClickListener
 {
 	private static final String TAG = "USB Mass Storage";
-	//private static final String DefaultMountPoint = "/dev/block/vold/179:1";
-	//private static final String DefaultMountPath = "/sys/devices/platform/usb_mass_storage/lun0/file";
-
 	private static boolean isFirstTime = true;
 		
 	private SharedPreferences preferences;
@@ -79,8 +76,8 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
 	private String StrErrorNoUSB;
 	private String StrErrorNoRoot;
 
-    private static TextView UI_TextUMSState;
-    private static View UI_ToggleStateButton;
+    private TextView UI_TextUMSState;
+    private View UI_ToggleStateButton;
 
 
 
@@ -144,8 +141,14 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         if(isFirstTime)
         {
         	isFirstTime = false;
-        	moveTaskToBack(true);
+        	hideActivity();
         }
+    }
+    
+    @Override
+    public void onBackPressed()
+    {
+    	hideActivity();
     }
     
     private void initStringsFromResources()
@@ -163,18 +166,26 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     @Override
     protected void onDestroy()
     {
-    	super.onDestroy();
-    	
-     	if(isFinishing())
-    	{
-    		notificationManager.cancelAll();
-    		notificationManager = null;
-    		
-    		unregisterReceiver(mBatteryStateBroadcastReceiver);
-	    	mBatteryStateBroadcastReceiver = null;  	
-    	}
+    	super.onDestroy();  	
+    	finishUp();
     }
     
+    private void hideActivity()
+    {
+    	moveTaskToBack(true);    	
+    }
+    
+	private void finishUp()
+	{
+		if(mBatteryStateBroadcastReceiver != null)
+		{
+			unregisterReceiver(mBatteryStateBroadcastReceiver);
+	   		mBatteryStateBroadcastReceiver = null;  	
+		}
+		
+    	finish();
+	}
+
 	public void onClick(View v)
 	{
         if(v.getId() == R.id.UI_ToggleStateButton)
@@ -201,19 +212,26 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         switch(item.getItemId())
         {         
         	case R.id.menu_settings:
+            {
         		Intent menuIntent = new Intent(getBaseContext(), UmsPreferencesActivity.class);
         		startActivity(menuIntent);
         		return true;
-
+            }
         	case R.id.menu_info:
-        		Uri uri = Uri.parse("http://forum.xda-developers.com/showthread.php?t=1389375"); 
+            {
+            	Uri uri = Uri.parse("http://forum.xda-developers.com/showthread.php?t=1389375");
+            	
         		Intent xdaintent = new Intent(Intent.ACTION_VIEW, uri); 
         		startActivity(xdaintent);
         		return true;
-        		
+            }
             case R.id.menu_quit:
-                finish();
+            {
+        		notificationManager.cancelAll();
+        		
+                finishUp();
                 return true;
+            }
         }
         return false;
     } 
@@ -285,7 +303,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     private void tryRealMount()
     {
     	if(!umsEnabled)
-    	{
+    	{   		
     		if(usbConnected && powerUp)
     		{       			
 	        	boolean success = runRootCommand("echo \"" + prefsVfatMountPoint + "\" > " + prefsLunfilePath);
@@ -618,7 +636,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     {
         @Override
         public void onReceive(Context context, Intent intent)
-        {   	        
+        {
             if (intent.getAction().equals(Intent.ACTION_BATTERY_CHANGED))
             {
                 int status = intent.getIntExtra("status", 0);
@@ -633,7 +651,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                         break;
                 }
 
-                boolean previousConnectedState = usbConnected;
+                boolean previouslyConnected = usbConnected;
                 usbConnected = false;
                 switch (plugged)
                 {
@@ -649,7 +667,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                 {
                 	if(prefsAutoMount)
                 	{
-                		if(!previousConnectedState)
+                		if(!previouslyConnected)
                 			tryMount();
                 	}
                 	

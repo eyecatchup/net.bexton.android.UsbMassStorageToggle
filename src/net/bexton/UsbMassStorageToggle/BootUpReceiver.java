@@ -11,6 +11,6 @@ public class BootUpReceiver extends BroadcastReceiver
     {
         Intent i = new Intent(context, UsbMassStorageToggleActivity.class);  
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(i); 
+        context.startActivity(i);
     }
 }
