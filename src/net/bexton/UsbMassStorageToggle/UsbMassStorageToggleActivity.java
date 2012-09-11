@@ -683,7 +683,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                     {
                     	// force anmount, must disconnect
                     	tryUnmount(true);
-                        showNotification("UMS " + StrNotificationUMSAutoDisabled + ".");
+                        showNotification(StrNotificationUMSAutoDisabled);
                     }
                     else
                     {
@@ -698,7 +698,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     
     private void repostLastNotification()
     {
-    	if(lastNotifText != null)
+    	if(lastNotifText != null && lastNotifText != "")
     		showNotification(lastNotifText);
     }
     
