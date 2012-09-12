@@ -133,7 +133,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         	Logger.logI(TAG, "Device specific setup successfully completed.");
         } 
         else
-        {           	
+        {
         	if(initRet != "")
         	{
         		Logger.logW(TAG, "Device specific setup failed. Usage disabled and prompt for setup.");
@@ -164,18 +164,15 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     protected void onDestroy()
     {
     	super.onDestroy();
-    	finishUp();
-    }
-    
-    private void finishUp()
-    {
-    	if(mBatteryStateBroadcastReceiver != null)
-    	{
-	    	unregisterReceiver(mBatteryStateBroadcastReceiver);
-	    	mBatteryStateBroadcastReceiver = null;
-    	}
     	
-    	finish();
+     	if(isFinishing())
+    	{
+    		notificationManager.cancelAll();
+    		notificationManager = null;
+    		
+    		unregisterReceiver(mBatteryStateBroadcastReceiver);
+	    	mBatteryStateBroadcastReceiver = null;  	
+    	}
     }
     
 	public void onClick(View v)
@@ -215,7 +212,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         		return true;
         		
             case R.id.menu_quit:
-                finishUp();
+                finish();
                 return true;
         }
         return false;
@@ -232,10 +229,10 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         prefsExtMountPoint = preferences.getString("pointExt", "");
         prefsLunfilePath = preferences.getString("path", "");
         deviceName = preferences.getString("deviceName", "");
-        prefsStickyNotifications = preferences.getBoolean("stickyNotifications", false);
+        prefsStickyNotifications = preferences.getBoolean("stickyNotifications", true);
         prefsAutoMount = preferences.getBoolean("usbAutoMount", false);
         prefsWarnMount = preferences.getBoolean("warnBeforeMount", false);
-        prefsLoggingEnabled = preferences.getBoolean("loggingEnabled", false);
+        prefsLoggingEnabled = preferences.getBoolean("loggingEnabled", true);
         
         Logger.setEnabled(prefsLoggingEnabled);
         
@@ -367,7 +364,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         prefsVfatMountPoint = getSdcard();        	
         prefsExtMountPoint = getSdExt();
     	
-    	if(hasFat == false && hasExt == false)
+    	if(!hasFat && !hasExt)
     	{
     		setup = false;
     		abortMsg = getString(R.string.ErrorNoPartitionsFound);
@@ -395,7 +392,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     {
     	Logger.logI(TAG, "Device name: " + deviceName);
     	Logger.logI(TAG, "VFAT Partition: sdcard mounted @ "+prefsVfatMountPoint);
-    	if(hasExt == true)
+    	if(hasExt)
     	{
     		Logger.logI(TAG, "EXT Partition: sd-ext mounted @ "+prefsExtMountPoint);
     	}
