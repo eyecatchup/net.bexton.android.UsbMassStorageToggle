@@ -44,7 +44,6 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     private boolean setup = false;
     @SuppressWarnings("unused")
     private boolean hasSu = false;
-    @SuppressWarnings("unused")
     private boolean hasLun = false;
     private boolean hasFat = false;
     private boolean hasExt = false;
@@ -61,7 +60,6 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     private boolean prefsWarnMount;
     private boolean prefsLoggingEnabled;
 
-
     private boolean powerUp;
     private boolean usbConnected;
     private boolean umsEnabled;
@@ -73,12 +71,11 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     private String StrNotificationUSBDisconnected;
     private String StrNotificationUMSAutoDisabled;
     private String StrErrorNoUSB;
+    private String StrErrorNoLun;
     private String StrErrorNoRoot;
 
     private TextView UI_TextUMSState;
     private View UI_ToggleStateButton;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -158,6 +155,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         StrNotificationUSBDisconnected = getString(R.string.NotificationUSBDisconnected);
         StrNotificationUMSAutoDisabled = getString(R.string.NotificationUMSAutoDisabled);
         StrErrorNoUSB = getString(R.string.ErrorNoUSB);
+        StrErrorNoLun = getString(R.string.ErrorNoLun);
         StrErrorNoRoot = getString(R.string.ErrorNoRoot);
     }
 
@@ -276,7 +274,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
             if(fileExists(propFile))
             {
                 runRootCommand("echo \"mass_storage,adb\" > " + propFile);
-            }            
+            }
         }
     }
 
@@ -311,21 +309,28 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         {
             if(usbConnected && powerUp)
             {
-                boolean success = runRootCommand("echo \"" + prefsVfatMountPoint + "\" > " + prefsLunfilePath);
-                if(success)
+                if(hasLun)
                 {
-                    umsEnabled = true;
+                    boolean success = runRootCommand("echo \"" + prefsVfatMountPoint + "\" > " + prefsLunfilePath);
+                    if(success)
+                    {
+                        umsEnabled = true;
 
-                    UI_TextUMSState.setText(StrStateEnabled);
-                    UI_ToggleStateButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.usbdroid_green));
+                        UI_TextUMSState.setText(StrStateEnabled);
+                        UI_ToggleStateButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.usbdroid_green));
 
-                    showNotification(StrStateEnabled);
+                        showNotification(StrStateEnabled);
+                    }
+                    else
+                    {
+                        // Show a toast if there were any errors with executing the shell command.
+                        popMsg(StrErrorNoRoot);
+                    }
                 }
                 else
                 {
-                    // Show a toast if there were any errors
-                    // with executing the shell command.
-                    popMsg(StrErrorNoRoot);
+                    // Show a toast if the lunfile path is not set, or invalid.
+                    popMsg(StrErrorNoLun);
                 }
             }
             else
@@ -439,7 +444,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     {
         final String path = strRootCommand("find /sys/devices `pwd` -name \"file\" | grep \"usb\" | grep \"lun0\" | sed -n '1,0p'");
 
-         if(fileExists(path))
+        if(fileExists(path))
         {
             hasLun = true;
             return path;
