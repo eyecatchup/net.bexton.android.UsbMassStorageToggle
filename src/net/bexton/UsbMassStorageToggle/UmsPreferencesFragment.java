@@ -19,6 +19,5 @@ public class UmsPreferencesFragment extends PreferenceFragment
         Preference pref = getPreferenceManager().findPreference("deviceName");
         if(pref != null)
         	pref.setSummary(getPreferenceManager().getSharedPreferences().getString("deviceName", "-"));
-    }
-    
+    }   
 }
