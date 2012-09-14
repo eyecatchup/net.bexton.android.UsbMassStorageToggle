@@ -268,8 +268,15 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
             final String psuc = strRootCommand("getprop persist.sys.usb.config | sed -n '1,0p'");
             if(psuc.indexOf(new String("mtp")) != -1)
             {
-                runRootCommand("setprop persist.sys.usb.config adb");
+                runRootCommand("setprop sys.usb.config mass_storage,adb");
+                runRootCommand("setprop persist.sys.usb.config mass_storage,adb");
+                runRootCommand("setprop sys.usb.state mass_storage,adb");
             }
+            final String propFile = "/data/property/persist.sys.usb.config";
+            if(fileExists(propFile))
+            {
+                runRootCommand("echo \"mass_storage,adb\" > " + propFile);
+            }            
         }
     }
 
