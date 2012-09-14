@@ -12,6 +12,7 @@
         android:icon="@drawable/usbdroid_blue"
         android:label="@string/AppName"
         android:theme="@style/StyleMain"
+        android:hardwareAccelerated="true"
         >
         
         <activity

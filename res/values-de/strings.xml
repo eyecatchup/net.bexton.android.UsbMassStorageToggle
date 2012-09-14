@@ -13,7 +13,7 @@
     <string name="NotificationUSBDisconnected">USB nicht verbunden.</string>
     <string name="NotificationUMSAutoDisabled">UMS automatisch deaktiviert.</string>
     
-    <string name="MountWarning">Mounten bedeutet dass einige Apps möglicherweise nicht mehr richtig arbeiten, falls sie momentan auf die SD-Karte zugreifen. Bist du sicher dass du jetzt mounten willst?</string>
+    <string name="MountWarning">Mounten bedeutet dass einige Apps möglicherweise nicht mehr richtig arbeiten, falls sie momentan auf die SD-Karte zugreifen. Sind sie sicher dass sie jetzt mounten wollen?</string>
     
     <string name="ErrorNoUSB">Fehler: Du kannst UMS nicht ohne USB-Verbindung aktivieren.</string>
     <string name="ErrorNoRoot">Fehler: Haben sie der App Root-Berechtigungen eingeräumt?</string>   
@@ -52,7 +52,7 @@
     <string name="PrefsCategoryAppSettings">Anwendungseinstellungen</string>
     <string name="PrefsCategoryMountSettings">Mount-Einstellungen</string>
     <string name="PrefsCategoryPathSettings">Pfadeinstellungen</string>
-    <string name="PrefsCategoryInfo">Information</string>
+    <string name="PrefsCategoryInfo">Informationen</string>
 
     <string name="PrefsDeviceName">Gerätename</string>
     <string name="PrefsVersion">Version</string>
