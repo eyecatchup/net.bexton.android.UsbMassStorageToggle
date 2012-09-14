@@ -17,7 +17,7 @@
         
         <activity
             android:label="@string/AppName"
-            android:name="net.bexton.UsbMassStorageToggle.UsbMassStorageToggleActivity"
+            android:name=".UsbMassStorageToggleActivity"
         	android:theme="@style/StyleMain"
         	android:launchMode="singleInstance"
         	>
@@ -29,19 +29,19 @@
         </activity>
 
         <activity
-            android:name="net.bexton.UsbMassStorageToggle.UmsPreferencesActivity"
+            android:name=".UmsPreferencesActivity"
         	android:theme="@style/StylePrefs"
-        	android:launchMode="singleInstance"        	
+        	android:launchMode="singleInstance"
         	>             
-        </activity>        
+        </activity>
         
-	    <receiver android:name="net.bexton.UsbMassStorageToggleActivity">
+	    <receiver android:name=".UsbMassStorageToggleActivity">
 	       <intent-filter>
-	           <action android:name="android.intent.action.ACTION_BATTERY_CHANGED" />
-	        </intent-filter>
-	    </receiver>
-	        	    
-		<receiver android:enabled="true" android:name="net.bexton.UsbMassStorageToggle.BootUpReceiver"
+	           <action android:name="android.intent.action.BATTERY_CHANGED" />
+	      </intent-filter>
+   	    </receiver>
+        	    
+		<receiver android:name=".BootUpReceiver"
 		    android:permission="android.permission.RECEIVE_BOOT_COMPLETED">		
 	        <intent-filter>
 	                <action android:name="android.intent.action.BOOT_COMPLETED" />

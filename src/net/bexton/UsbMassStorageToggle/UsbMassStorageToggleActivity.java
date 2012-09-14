@@ -37,7 +37,6 @@ import android.widget.Toast;
 public class UsbMassStorageToggleActivity extends Activity implements OnClickListener
 {
 	private static final String TAG = "USB Mass Storage";
-	private static boolean isFirstTime = true;
 		
 	private SharedPreferences preferences;
     private NotificationManager notificationManager;
@@ -121,9 +120,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         
         readUmsState();
 
-        IntentFilter filter = new IntentFilter();	
-        filter.addAction(Intent.ACTION_BATTERY_CHANGED);
-        registerReceiver(mBatteryStateBroadcastReceiver, filter);
+        registerReceiver(mBatteryStateBroadcastReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
         
         if(setup)
         {
@@ -138,9 +135,10 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         	}            	
         }
         
-        if(isFirstTime)
+        // the intent the activity got started from.
+        Intent intent = getIntent();
+        if(intent.hasExtra(BootUpReceiver.Identifier))
         {
-        	isFirstTime = false;
         	hideActivity();
         }
     }
@@ -636,7 +634,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     {
         @Override
         public void onReceive(Context context, Intent intent)
-        {
+        {          
             if (intent.getAction().equals(Intent.ACTION_BATTERY_CHANGED))
             {
                 int status = intent.getIntExtra("status", 0);
