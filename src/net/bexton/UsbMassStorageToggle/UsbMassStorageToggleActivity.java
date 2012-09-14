@@ -100,7 +100,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         readPreferences();
 
         String initRet = "";
-        if( prefsLunfilePath.equals(new String("")) || prefsVfatMountPoint.equals(new String("")) )
+        if( prefsLunfilePath.equals(String.valueOf("")) || prefsVfatMountPoint.equals(String.valueOf("")) )
         {
             Logger.logI(TAG, "Gathering device specific setup...");
             initRet = detectDeviceStats();
@@ -266,7 +266,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         if(prefsDisableMtp)
         {
             final String psuc = strRootCommand("getprop persist.sys.usb.config | sed -n '1,0p'");
-            if(psuc.indexOf(new String("mtp")) != -1)
+            if(psuc.indexOf(String.valueOf("mtp")) != -1)
             {
                 runRootCommand("setprop sys.usb.config mass_storage,adb");
                 runRootCommand("setprop persist.sys.usb.config mass_storage,adb");
@@ -394,7 +394,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         }
 
         prefsLunfilePath = getLunPath();
-        if(prefsLunfilePath.equals(new String("false")))
+        if(prefsLunfilePath.equals(String.valueOf("false")))
         {
             setup = false;
             abortMsg = getString(R.string.ErrorNoLunFileFound);
@@ -446,7 +446,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         }
         else
         {
-            return new String("false");
+            return String.valueOf("false");
         }
     }
 
@@ -464,7 +464,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         }
         else
         {
-            return new String("false");
+            return String.valueOf("false");
         }
     }
 
@@ -479,7 +479,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         }
         else
         {
-            return new String("false");
+            return String.valueOf("false");
         }
     }
 
