@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>  
    
-    <string name="AppUsage">Nutzung: Tippe auf das Symbol, um den UMS Modus wechseln.</string>
+    <string name="AppUsage">Nutzung: Tippe auf das Symbol, um den UMS Modus zu wechseln.</string>
         
     <string name="Quit">Anwendung beenden</string>
     <string name="MenuSettings">Einstellungen</string>

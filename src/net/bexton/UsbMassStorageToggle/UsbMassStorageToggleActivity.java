@@ -437,7 +437,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
 
     private String getLunPath()
     {
-        final String path = strRootCommand("find /sys/devices/platform `pwd` -name \"file\" | grep \"usb\" | grep \"lun0\" | sed -n '1,0p'");
+        final String path = strRootCommand("find /sys/devices `pwd` -name \"file\" | grep \"usb\" | grep \"lun0\" | sed -n '1,0p'");
 
          if(fileExists(path))
         {
