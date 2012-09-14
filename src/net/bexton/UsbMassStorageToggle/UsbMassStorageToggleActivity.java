@@ -44,7 +44,8 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     private boolean setup = false;
     @SuppressWarnings("unused")
     private boolean hasSu = false;
-    private boolean hasLun = false;
+    @SuppressWarnings("unused")
+	private boolean hasLun = false;
     private boolean hasFat = false;
     private boolean hasExt = false;
     private String deviceName;
@@ -71,7 +72,8 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     private String StrNotificationUSBDisconnected;
     private String StrNotificationUMSAutoDisabled;
     private String StrErrorNoUSB;
-    private String StrErrorNoLun;
+    @SuppressWarnings("unused")
+	private String StrErrorNoLun;
     private String StrErrorNoRoot;
 
     private TextView UI_TextUMSState;
@@ -309,8 +311,8 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         {
             if(usbConnected && powerUp)
             {
-                if(hasLun)
-                {
+                //if(hasLun)
+                //{
                     boolean success = runRootCommand("echo \"" + prefsVfatMountPoint + "\" > " + prefsLunfilePath);
                     if(success)
                     {
@@ -326,12 +328,12 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
                         // Show a toast if there were any errors with executing the shell command.
                         popMsg(StrErrorNoRoot);
                     }
-                }
-                else
-                {
+                //}
+                //else
+                //{
                     // Show a toast if the lunfile path is not set, or invalid.
-                    popMsg(StrErrorNoLun);
-                }
+                    //popMsg(StrErrorNoLun);
+                //}
             }
             else
             {
