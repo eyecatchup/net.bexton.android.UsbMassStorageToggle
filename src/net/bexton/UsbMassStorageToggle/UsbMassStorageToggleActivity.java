@@ -84,7 +84,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.layout);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
@@ -100,6 +100,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         readPreferences();
 
         String initRet = "";
+
         if( prefsLunfilePath.equals(String.valueOf("")) || prefsVfatMountPoint.equals(String.valueOf("")) )
         {
             Logger.logI(TAG, "Gathering device specific setup...");
@@ -199,7 +200,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     public boolean onCreateOptionsMenu(Menu menu)
     {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+        inflater.inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -209,24 +210,21 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
 
         switch(item.getItemId())
         {
-            case R.id.menu_settings:
+            case R.id.ActionSettings:
             {
-                Intent menuIntent = new Intent(getBaseContext(), UmsPreferencesActivity.class);
-                startActivity(menuIntent);
+                Intent intent = new Intent(getBaseContext(), UmsPreferencesActivity.class);
+                startActivity(intent);
                 return true;
             }
-            case R.id.menu_info:
+            case R.id.ActionWebLink:
             {
-                Uri uri = Uri.parse("http://forum.xda-developers.com/showthread.php?t=1389375");
-
-                Intent xdaintent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(xdaintent);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://forum.xda-developers.com/showthread.php?t=1389375"));
+                startActivity(intent);
                 return true;
             }
-            case R.id.menu_quit:
+            case R.id.ActionQuit:
             {
                 notificationManager.cancelAll();
-
                 finishUp();
                 return true;
             }
@@ -394,6 +392,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         }
 
         prefsLunfilePath = getLunPath();
+
         if(prefsLunfilePath.equals(String.valueOf("false")))
         {
             setup = false;
@@ -414,12 +413,12 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
     private void logDeviceStats()
     {
         Logger.logI(TAG, "Device name: " + deviceName);
-        Logger.logI(TAG, "VFAT Partition: sdcard mounted @ "+prefsVfatMountPoint);
+        Logger.logI(TAG, "VFAT Partition: sdcard mounted @ " + prefsVfatMountPoint);
         if(hasExt)
         {
-            Logger.logI(TAG, "EXT Partition: sd-ext mounted @ "+prefsExtMountPoint);
+            Logger.logI(TAG, "EXT Partition: sd-ext mounted @ " + prefsExtMountPoint);
         }
-        Logger.logI(TAG, "Lunfile path: "+prefsLunfilePath);
+        Logger.logI(TAG, "Lunfile path: " + prefsLunfilePath);
     }
 
     private static boolean fileExists(final String path)
@@ -437,15 +436,16 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
 
     private String getLunPath()
     {
-        final String path = strRootCommand("find /sys/devices/platform `pwd` -name \"file\" | grep \"usb\" | grep \"lun0\" | sed -n '1,0p'");
+        final String path = strRootCommand("find /sys/devices 'pwd' -name \"file\" | grep usb | grep lun0 | sed -n '1,0p'");
 
-         if(fileExists(path))
+        if(fileExists(path))
         {
             hasLun = true;
             return path;
         }
         else
         {
+        	hasLun = false;
             return String.valueOf("false");
         }
     }
@@ -479,6 +479,7 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
         }
         else
         {
+        	hasExt = false;
             return String.valueOf("false");
         }
     }
@@ -494,9 +495,9 @@ public class UsbMassStorageToggleActivity extends Activity implements OnClickLis
 
     private boolean hasSuBinary()
     {
-         hasSu = false;
+    	hasSu = false;
 
-         try
+        try
         {
             File su = new File("/system/bin/su");
             if (su.exists())

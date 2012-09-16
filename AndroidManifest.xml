@@ -5,20 +5,18 @@
     android:versionName="@string/AppVersion"
     >
 
-    <uses-sdk android:minSdkVersion="14" />
+    <uses-sdk android:minSdkVersion="14"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     
     <application
         android:icon="@drawable/usbdroid_blue"
         android:label="@string/AppName"
-        android:theme="@style/StyleMain"
         android:hardwareAccelerated="true"
+        android:theme="@style/WindowStyleMain"
         >
         
         <activity
-            android:label="@string/AppName"
             android:name=".UsbMassStorageToggleActivity"
-        	android:theme="@style/StyleMain"
         	android:launchMode="singleInstance"
         	>
         	
@@ -30,8 +28,8 @@
 
         <activity
             android:name=".UmsPreferencesActivity"
-        	android:theme="@style/StylePrefs"
         	android:launchMode="singleInstance"
+   	        android:theme="@style/WindowStylePreferences"
         	>             
         </activity>
         

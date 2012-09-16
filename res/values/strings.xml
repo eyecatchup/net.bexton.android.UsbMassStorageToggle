@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>  
     <string name="AppName">USB Mass Storage Toggle</string>
-    <string name="AppVersion">1.3.2</string>
+    <string name="AppVersion">2.1.0</string>
     <string name="AppAuthor">&#169; 2012 Stephan Schmitz, Jürgen Rauscher</string>
     
-    <string name="AppUsage">Usage: Tap on the symbol to switch the UMS mode.</string>
+    <string name="AppUsage">Usage: Tap on the symbol to switch UMS mode.</string>
         
-    <string name="Quit">Quit application</string>
+    <string name="Quit">Quit</string>
     <string name="MenuSettings">Settings</string>
     <string name="MenuWebLink">Visit Weblink</string>
        

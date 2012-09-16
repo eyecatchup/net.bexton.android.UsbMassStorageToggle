@@ -21,17 +21,17 @@ public final class R {
         public static final int usbdroid_green_small=0x7f020004;
     }
     public static final class id {
+        public static final int ActionQuit=0x7f090004;
+        public static final int ActionSettings=0x7f090002;
+        public static final int ActionWebLink=0x7f090003;
         public static final int UI_TextUMSState=0x7f090001;
         public static final int UI_ToggleStateButton=0x7f090000;
-        public static final int menu_info=0x7f090003;
-        public static final int menu_quit=0x7f090004;
-        public static final int menu_settings=0x7f090002;
     }
     public static final class layout {
-        public static final int main=0x7f030000;
+        public static final int layout=0x7f030000;
     }
     public static final class menu {
-        public static final int main_menu=0x7f080000;
+        public static final int menu=0x7f080000;
     }
     public static final class string {
         public static final int AppAuthor=0x7f050002;
@@ -80,8 +80,8 @@ public final class R {
         public static final int UMSEnabled=0x7f050007;
     }
     public static final class style {
-        public static final int StyleMain=0x7f070000;
-        public static final int StylePrefs=0x7f070001;
+        public static final int WindowStyleMain=0x7f070000;
+        public static final int WindowStylePreferences=0x7f070001;
     }
     public static final class xml {
         public static final int preferences=0x7f040000;
