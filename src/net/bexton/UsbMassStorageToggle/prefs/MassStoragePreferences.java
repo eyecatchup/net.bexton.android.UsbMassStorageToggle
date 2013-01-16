@@ -1,9 +1,9 @@
-package net.bexton.UsbMassStorageToggle;
+package net.bexton.UsbMassStorageToggle.prefs;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-public class UmsPreferencesActivity extends Activity
+public class MassStoragePreferences extends Activity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -12,7 +12,7 @@ public class UmsPreferencesActivity extends Activity
 
         // Display the fragment as the main content.
         getFragmentManager().beginTransaction()
-                .replace(android.R.id.content, new UmsPreferencesFragment())
+                .replace(android.R.id.content, new PreferencesFragment())
                 .commit();
     }
 }

@@ -1,4 +1,4 @@
-package net.bexton.UsbMassStorageToggle;
+package net.bexton.UsbMassStorageToggle.core;
 
 import android.util.Log;
 
@@ -6,7 +6,8 @@ import android.util.Log;
 public class Logger
 {
 	private static boolean enabled = true;
-		
+
+	
 	public static void setEnabled(boolean enable)
 	{
 		enabled = enable;
@@ -15,7 +16,7 @@ public class Logger
 	
 	public static void logD(final String tag, final String msg)
 	{
-		if(enabled)
+		if(enabled && Constants.Debugging)
 			Log.d(tag, msg);
 	}
 	

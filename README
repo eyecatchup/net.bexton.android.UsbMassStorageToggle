@@ -3,3 +3,28 @@ Android 4.x App: USB Mass Storage Toggle
 (c) 2012 Stephan Schmitz, Jürgen Rauscher
 
 For details checkout: http://forum.xda-developers.com/showthread.php?t=1389375
+
+
+Changelog:
+
+USB Mass Storage Toggle
+
+Version 2.4:
+
+- change code to mount all sd-cards found, not just one.
+- fix bug with detecting initial mount-state
+- fix bug with detecting sd-cards
+- added widget to use the usb-storage even more quickly
+- added option to vibrate (1-1000 milliseconds, 0 to deactivate)
+- added option to disable popups
+- changed notifications to be activatable, instead of sticky and non-sticky.
+- improve description of preferences
+- cleaned up current translations to be more clear and similar
+- removed time being shown on the notifications
+- removed quit-item in the menu, as it doesnt make much sense on android.
+
+- TODO: add all previously existing translations again (french, spanish, italian, ...)
+
+Version 2.3:
+- changed app to include either the overflow menu (modern devices with no hardware menu button) or
+the normal menu (old devices with hardware buttons)

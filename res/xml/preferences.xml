@@ -2,26 +2,28 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     
 <PreferenceCategory android:title="@string/PrefsCategoryAppSettings">
-   	<CheckBoxPreference android:key="stickyNotifications" android:title="@string/PrefsStickyNotificationsTitle" android:summary="@string/PrefsStickyNotificationsSummary" android:defaultValue="true" />
-   	<CheckBoxPreference android:key="usbAutoMount" android:title="@string/PrefsAutoMountTitle" android:summary="@string/PrefsAutoMountSummary" android:defaultValue="false" />
-   	<CheckBoxPreference android:key="warnBeforeMount" android:title="@string/PrefsWarnOnMountTitle" android:summary="@string/PrefsWarnOnMountSummary" android:defaultValue="false" />
-	<CheckBoxPreference android:key="loggingEnabled" android:title="@string/PrefsLoggingTitle" android:summary="@string/PrefsLoggingSummary" android:defaultValue="true" />
+   	<CheckBoxPreference android:key="showNotifications" android:title="@string/PrefsNotificationTitle" android:summary="@string/PrefsNotificationSummary" android:defaultValue="true" />
+   	<CheckBoxPreference android:key="showPopups" android:title="@string/PrefsPopupsTitle" android:summary="@string/PrefsPopupsSummary" android:defaultValue="true" />
+   	<CheckBoxPreference android:key="autoMount" android:title="@string/PrefsAutoMountTitle" android:summary="@string/PrefsAutoMountSummary" android:defaultValue="false" />
+   	<CheckBoxPreference android:key="mountWarning" android:title="@string/PrefsWarnOnMountTitle" android:summary="@string/PrefsWarnOnMountSummary" android:defaultValue="false" />
+   	<EditTextPreference android:inputType="number"
+   	    				android:key="vibrateMillis" android:title="@string/PrefsVibrateOnMountTitle" android:summary="@string/PrefsVibrateOnMountSummary" android:defaultValue="0" />
+   	<CheckBoxPreference android:key="loggingEnabled" android:title="@string/PrefsLoggingTitle" android:summary="@string/PrefsLoggingSummary" android:defaultValue="true" />
 
  </PreferenceCategory><PreferenceCategory android:title="@string/PrefsCategoryPathSettings">
-	<EditTextPreference android:key="point" android:title="@string/PrefsVFATMountPointsTitle" android:summary="@string/PrefsVFATMountPointsSummary" android:defaultValue="" />   
-	<EditTextPreference android:key="pointExt" android:title="@string/PrefsEXTMountPointsTitle" android:summary="@string/PrefsEXTMountPointsSummary" android:defaultValue="" /> 
-	<EditTextPreference android:key="path" android:title="@string/PrefsLUNPathTitle" android:summary="@string/PrefsLUNPathSummary" android:defaultValue=""/>
+	<EditTextPreference android:key="sdcardPaths" android:title="@string/PrefsSDCardPathsTitle" android:summary="@string/PrefsSDCardPathsSummary" android:defaultValue="" />   
+	<EditTextPreference android:key="sdextPath" android:title="@string/PrefsSDExtPathsTitle" android:summary="@string/PrefsSDExtPathsSummary" android:defaultValue="" /> 
+	<EditTextPreference android:key="lunfilePaths" android:title="@string/PrefsLUNFilePathTitle" android:summary="@string/PrefsLUNFilePathSummary" android:defaultValue=""/>
 </PreferenceCategory>
 
-<PreferenceCategory android:title="@string/PrefsCategoryMountSettings">
-    <CheckBoxPreference android:key="defaultMount" android:title="@string/PrefsDefaultMountTitle" android:summary="@string/PrefsDefaultMountSummary" android:defaultValue="true" />
+<PreferenceCategory android:title="@string/PrefsCategoryMTPSettings">
     <CheckBoxPreference android:key="mtpSupport" android:title="@string/PrefsMTPSupportTitle" android:summary="@string/PrefsMTPSupportSummary" android:defaultValue="false" />
 </PreferenceCategory>
  
  <PreferenceCategory android:title="@string/PrefsCategoryInfo">
 	<Preference android:title="@string/PrefsDeviceName" android:summary="" android:key="deviceName" />
 	<Preference android:title="@string/PrefsVersion" android:summary="@string/AppVersion" android:key="version" />
-	<Preference android:title="@string/PrefsAuthor" android:summary="@string/AppAuthor" android:key="author" /> 
+	<Preference android:title="@string/PrefsAuthors" android:summary="@string/AppAuthors" android:key="author" /> 
  </PreferenceCategory>
 
 </PreferenceScreen>

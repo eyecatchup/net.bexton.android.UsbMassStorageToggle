@@ -6,14 +6,12 @@ import android.content.Intent;
 
 public class BootUpReceiver extends BroadcastReceiver
 {
-	public static String Identifier = "fromBootUp";
-	
     @Override
     public void onReceive(Context context, Intent intent)
     {
-        Intent i = new Intent(context, UsbMassStorageToggleActivity.class);  
+        Intent i = new Intent(context, MassStorageActivity.class);  
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        i.putExtra(Identifier, true);
+        i.putExtra(MassStorageActivity.ActivityFlags.FlagHide, true);
         context.startActivity(i);
     }
 }

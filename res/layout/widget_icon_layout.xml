@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/WidgetLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center">
+        <ImageView
+            android:id="@+id/WidgetIcon"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingLeft="2dp"
+            android:layout_margin="4dp"
+            android:contentDescription="@string/AppName"
+            android:src="@drawable/usbdroid_blue_small"
+            />
+</FrameLayout>

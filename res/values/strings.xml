@@ -1,64 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>  
+<resources>
     <string name="AppName">USB Mass Storage Toggle</string>
-    <string name="AppVersion">2.1.0</string>
-    <string name="AppAuthor">&#169; 2012 Stephan Schmitz, Jürgen Rauscher</string>
+    <string name="AppVersion">2.4</string>
+    <string name="AppAuthors">&#169; 2012 Stephan Schmitz, Jürgen Rauscher</string>
     
-    <string name="AppUsage">Usage: Tap on the symbol to switch UMS mode.</string>
-        
-    <string name="Quit">Quit</string>
-    <string name="MenuSettings">Settings</string>
+    <string name="Usage">Touch the symbol to copy files from/to your computer.</string>
+    
+     <string name="MenuSettings">Settings</string>
     <string name="MenuWebLink">Visit Weblink</string>
-       
-    <string name="UMSEnabled">UMS is activated.</string>
-    <string name="UMSDisabled">UMS is deactivated.</string>
-    <string name="NotificationUSBConnected">USB connected. Tap to open the UMS app.</string>
-    <string name="NotificationUSBDisconnected">USB disconnected.</string>
-    <string name="NotificationUMSAutoDisabled">UMS automatically deactivated.</string>
     
-    <string name="MountWarning">Mounting means that some apps won\'t run correctly anymore if they are accessing the SD-Card right now. Are you sure that you want to mount now?</string>
+    <string name="USBStorageActive">USB storage in use</string>
+    <string name="USBCablePlugged">USB cable connected</string>
+     <string name="USBCableUnplugged">USB cable disconnected</string>
     
-    <string name="ErrorNoUSB">Error! You cannot enable UMS without a USB connection.</string>
-    <string name="ErrorNoRoot">Error! Did you grant root permissions to the app?</string>   
-    <string name="ErrorNoSuperUser">Superuser binary not found! You cannot use this app without root access.</string>
-    <string name="ErrorNoLunFileFound">Lunfile not found! You cannot use this app without root access.</string>
-    <string name="ErrorUnrootedDevice">Phone seems to be not rooted! You cannot use this app without root access.</string>         
-    <string name="ErrorNoPartitionsFound">No partitions found! Please use the menu to configure them manually.</string>
-      
-    <string name="PrefsAutoMountTitle">Automount on USB Connect</string>
-    <string name="PrefsAutoMountSummary">Automatically mounts the SD-Card when the USB-cable is plugged in.</string>
+    <string name="MountWarning">If you turn on USB storage, some apps that you\'re using will stop and may be unavailable until you turn off USB storage.</string>
+    
+    <string name="ErrorNoRoot">Root Error: Did you grant root permissions to the app?</string>   
+    <string name="ErrorNoSuperUser">SU Error: SU executable not found! You cannot use this app without root access.</string>
+    <string name="ErrorUnrootedDevice">Root Error: Phone seems to be unrooted! You cannot use this application without root access.</string>         
+    <string name="ErrorNoPartitionsFound">Partition Error: No partitions found! Please configure the settings manually.</string>
+    <string name="ErrorNoLunFileFound">LUN file Error: File not found! You cannot use this app without root access.</string>
+    
+    <string name="PrefsAutoMountTitle">Automatically connect</string>
+    <string name="PrefsAutoMountSummary">Automatically connect the USB storage when the usb cable is plugged in.</string>
     
     <string name="PrefsLoggingTitle">Logging</string>
-    <string name="PrefsLoggingSummary">Enable or disable logging to the OS.</string>
+    <string name="PrefsLoggingSummary">Turns logging of this application on or off.</string>
     
-    <string name="PrefsStickyNotificationsTitle">Sticky Notifications</string>
-    <string name="PrefsStickyNotificationsSummary">If checked, the notifications are non-erasable in the statusbar anymore.</string>
+    <string name="PrefsNotificationTitle">Notification icon</string>
+    <string name="PrefsNotificationSummary">When deactivated no notification will appear in the statusbar anymore.</string>
     
-    <string name="PrefsWarnOnMountTitle">Show warning on mount</string>
-    <string name="PrefsWarnOnMountSummary">Shows a warning before mounting to prevent accidental mounting. (Note: Setting is not respected in automatic mode).</string>
-        
-    <string name="PrefsDefaultMountTitle">VFAT as default"</string>
-    <string name="PrefsDefaultMountSummary">Mount vfat partition as default.</string>
+    <string name="PrefsPopupsTitle">Popups</string>
+    <string name="PrefsPopupsSummary">When deactivated no popups (toasts) will appear on the screen anymore.</string>
     
-    <string name="PrefsMTPSupportTitle">Force UMS / Suppress MTP</string>
-    <string name="PrefsMTPSupportSummary">Removes MTP from persist.sys.usb.config (will be restored, when unchecked).</string>
+    <string name="PrefsWarnOnMountTitle">Show warning</string>
+    <string name="PrefsWarnOnMountSummary">Shows a warning before connecting the USB storage to prevent accidental use. (Note: Setting is not respected in automatic mode).</string>
+
+    <string name="PrefsVibrateOnMountTitle">Vibrate</string>
+    <string name="PrefsVibrateOnMountSummary">Vibrates upon change of the USB storage mode for the given time period in milliseconds.</string>
     
-    <string name="PrefsVFATMountPointsTitle">VFAT Mount Points</string>
-    <string name="PrefsVFATMountPointsSummary">View/Change auto-detected values.</string>
-      
-    <string name="PrefsEXTMountPointsTitle">EXT Mount Points</string>
-    <string name="PrefsEXTMountPointsSummary">View/Change auto-detected values.</string>
+    <string name="PrefsMTPSupportTitle">Force USB/Suppress MTP</string>
+    <string name="PrefsMTPSupportSummary">Removes MTP from build.prop/persist.sys.usb.config (restored upon deactivation).</string>
     
-    <string name="PrefsLUNPathTitle">Lunfile Path</string>
-    <string name="PrefsLUNPathSummary">View/Change auto-detected values.</string>
+    <string name="PrefsSDCardPathsTitle">SD-Card partitions paths</string>
+    <string name="PrefsSDCardPathsSummary">View/Change the paths to the SD-Card partitions.</string>
+    
+    <string name="PrefsSDExtPathsTitle">SD-Ext partition path</string>
+    <string name="PrefsSDExtPathsSummary">View/Change the path to the SD-Ext partition (if you have one).</string>
+    
+    <string name="PrefsLUNFilePathTitle">LUN-files paths</string>
+    <string name="PrefsLUNFilePathSummary">View/Change the path to the LUN-files.</string>
     
     <string name="PrefsCategoryAppSettings">Application Settings</string>
-    <string name="PrefsCategoryMountSettings">Mount Settings</string>
-    <string name="PrefsCategoryPathSettings">Path Settings</string>
+    <string name="PrefsCategoryMTPSettings">MTP Settings</string>
+    <string name="PrefsCategoryPathSettings">Experts: Path Settings</string>
     <string name="PrefsCategoryInfo">Information</string>
 
     <string name="PrefsDeviceName">Device name</string>
     <string name="PrefsVersion">Version</string>
-    <string name="PrefsAuthor">Author</string>
-         
+    <string name="PrefsAuthors">Authors</string>
+    
 </resources>

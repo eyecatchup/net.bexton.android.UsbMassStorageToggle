@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.bexton.UsbMassStorageToggle"
-    android:versionCode="2"
+    android:versionCode="24"
     android:versionName="@string/AppVersion"
     >
 
     <uses-sdk android:minSdkVersion="14"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
     
     <application
         android:icon="@drawable/usbdroid_blue"
@@ -16,7 +17,7 @@
         >
         
         <activity
-            android:name=".UsbMassStorageToggleActivity"
+            android:name=".MassStorageActivity"
         	android:launchMode="singleInstance"
         	>
         	
@@ -27,13 +28,13 @@
         </activity>
 
         <activity
-            android:name=".UmsPreferencesActivity"
+            android:name=".prefs.MassStoragePreferences"
         	android:launchMode="singleInstance"
    	        android:theme="@style/WindowStylePreferences"
         	>             
         </activity>
         
-	    <receiver android:name=".UsbMassStorageToggleActivity">
+	    <receiver android:name=".MassStorageActivity">
 	       <intent-filter>
 	           <action android:name="android.intent.action.BATTERY_CHANGED" />
 	      </intent-filter>
@@ -45,6 +46,16 @@
 	                <action android:name="android.intent.action.BOOT_COMPLETED" />
 	                <category android:name="android.intent.category.DEFAULT" />
 	        </intent-filter>
-		</receiver>	           
+		</receiver>
+		
+		<receiver android:name=".MassStorageWidgetIcon"
+		    android:exported="false">
+		    <intent-filter>
+		        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+		    </intent-filter>
+		    <meta-data android:name="android.appwidget.provider"
+		               android:resource="@xml/widget_icon_info" />
+		    </receiver>
+	
     </application>  
 </manifest>

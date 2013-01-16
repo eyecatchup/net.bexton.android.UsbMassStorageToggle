@@ -21,63 +21,63 @@ public final class R {
         public static final int usbdroid_green_small=0x7f020004;
     }
     public static final class id {
-        public static final int ActionQuit=0x7f090004;
-        public static final int ActionSettings=0x7f090002;
-        public static final int ActionWebLink=0x7f090003;
+        public static final int ActionSettings=0x7f090004;
+        public static final int ActionWebLink=0x7f090005;
         public static final int UI_TextUMSState=0x7f090001;
         public static final int UI_ToggleStateButton=0x7f090000;
+        public static final int WidgetIcon=0x7f090003;
+        public static final int WidgetLayout=0x7f090002;
     }
     public static final class layout {
         public static final int layout=0x7f030000;
+        public static final int widget_icon_layout=0x7f030001;
     }
     public static final class menu {
         public static final int menu=0x7f080000;
     }
     public static final class string {
-        public static final int AppAuthor=0x7f050002;
+        public static final int AppAuthors=0x7f050002;
         public static final int AppName=0x7f050000;
-        public static final int AppUsage=0x7f050003;
         public static final int AppVersion=0x7f050001;
-        public static final int ErrorNoLunFileFound=0x7f050010;
-        public static final int ErrorNoPartitionsFound=0x7f050012;
-        public static final int ErrorNoRoot=0x7f05000e;
-        public static final int ErrorNoSuperUser=0x7f05000f;
-        public static final int ErrorNoUSB=0x7f05000d;
-        public static final int ErrorUnrootedDevice=0x7f050011;
-        public static final int MenuSettings=0x7f050005;
-        public static final int MenuWebLink=0x7f050006;
-        public static final int MountWarning=0x7f05000c;
-        public static final int NotificationUMSAutoDisabled=0x7f05000b;
-        public static final int NotificationUSBConnected=0x7f050009;
-        public static final int NotificationUSBDisconnected=0x7f05000a;
-        public static final int PrefsAuthor=0x7f05002b;
-        public static final int PrefsAutoMountSummary=0x7f050014;
-        public static final int PrefsAutoMountTitle=0x7f050013;
-        public static final int PrefsCategoryAppSettings=0x7f050025;
-        public static final int PrefsCategoryInfo=0x7f050028;
-        public static final int PrefsCategoryMountSettings=0x7f050026;
-        public static final int PrefsCategoryPathSettings=0x7f050027;
-        public static final int PrefsDefaultMountSummary=0x7f05001c;
-        public static final int PrefsDefaultMountTitle=0x7f05001b;
-        public static final int PrefsDeviceName=0x7f050029;
-        public static final int PrefsEXTMountPointsSummary=0x7f050022;
-        public static final int PrefsEXTMountPointsTitle=0x7f050021;
-        public static final int PrefsLUNPathSummary=0x7f050024;
-        public static final int PrefsLUNPathTitle=0x7f050023;
-        public static final int PrefsLoggingSummary=0x7f050016;
-        public static final int PrefsLoggingTitle=0x7f050015;
-        public static final int PrefsMTPSupportSummary=0x7f05001e;
-        public static final int PrefsMTPSupportTitle=0x7f05001d;
-        public static final int PrefsStickyNotificationsSummary=0x7f050018;
-        public static final int PrefsStickyNotificationsTitle=0x7f050017;
-        public static final int PrefsVFATMountPointsSummary=0x7f050020;
-        public static final int PrefsVFATMountPointsTitle=0x7f05001f;
-        public static final int PrefsVersion=0x7f05002a;
-        public static final int PrefsWarnOnMountSummary=0x7f05001a;
-        public static final int PrefsWarnOnMountTitle=0x7f050019;
-        public static final int Quit=0x7f050004;
-        public static final int UMSDisabled=0x7f050008;
-        public static final int UMSEnabled=0x7f050007;
+        public static final int ErrorNoLunFileFound=0x7f05000e;
+        public static final int ErrorNoPartitionsFound=0x7f05000d;
+        public static final int ErrorNoRoot=0x7f05000a;
+        public static final int ErrorNoSuperUser=0x7f05000b;
+        public static final int ErrorUnrootedDevice=0x7f05000c;
+        public static final int MenuSettings=0x7f050004;
+        public static final int MenuWebLink=0x7f050005;
+        public static final int MountWarning=0x7f050009;
+        public static final int PrefsAuthors=0x7f050029;
+        public static final int PrefsAutoMountSummary=0x7f050010;
+        public static final int PrefsAutoMountTitle=0x7f05000f;
+        public static final int PrefsCategoryAppSettings=0x7f050023;
+        public static final int PrefsCategoryInfo=0x7f050026;
+        public static final int PrefsCategoryMTPSettings=0x7f050024;
+        public static final int PrefsCategoryPathSettings=0x7f050025;
+        public static final int PrefsDeviceName=0x7f050027;
+        public static final int PrefsLUNFilePathSummary=0x7f050022;
+        public static final int PrefsLUNFilePathTitle=0x7f050021;
+        public static final int PrefsLoggingSummary=0x7f050012;
+        public static final int PrefsLoggingTitle=0x7f050011;
+        public static final int PrefsMTPSupportSummary=0x7f05001c;
+        public static final int PrefsMTPSupportTitle=0x7f05001b;
+        public static final int PrefsNotificationSummary=0x7f050014;
+        public static final int PrefsNotificationTitle=0x7f050013;
+        public static final int PrefsPopupsSummary=0x7f050016;
+        public static final int PrefsPopupsTitle=0x7f050015;
+        public static final int PrefsSDCardPathsSummary=0x7f05001e;
+        public static final int PrefsSDCardPathsTitle=0x7f05001d;
+        public static final int PrefsSDExtPathsSummary=0x7f050020;
+        public static final int PrefsSDExtPathsTitle=0x7f05001f;
+        public static final int PrefsVersion=0x7f050028;
+        public static final int PrefsVibrateOnMountSummary=0x7f05001a;
+        public static final int PrefsVibrateOnMountTitle=0x7f050019;
+        public static final int PrefsWarnOnMountSummary=0x7f050018;
+        public static final int PrefsWarnOnMountTitle=0x7f050017;
+        public static final int USBCablePlugged=0x7f050007;
+        public static final int USBCableUnplugged=0x7f050008;
+        public static final int USBStorageActive=0x7f050006;
+        public static final int Usage=0x7f050003;
     }
     public static final class style {
         public static final int WindowStyleMain=0x7f070000;
@@ -85,5 +85,6 @@ public final class R {
     }
     public static final class xml {
         public static final int preferences=0x7f040000;
+        public static final int widget_icon_info=0x7f040001;
     }
 }

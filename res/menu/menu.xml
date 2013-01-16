@@ -10,9 +10,4 @@
           android:title="@string/MenuWebLink"
           android:icon="@drawable/usbdroid_blue_small"
           showAsAction="ifRoom|withText"/> 
-    
-    <item android:id="@+id/ActionQuit"
-          android:title="@string/Quit"
-          android:icon="@drawable/usbdroid_blue_small"
-          showAsAction="ifRoom|withText"/>   
 </menu>
